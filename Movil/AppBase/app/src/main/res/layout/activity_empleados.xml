@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        tools:context=".EmpleadosActivity">
+
+    <!-- Encabezado estilo KSHOP -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp">
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_empleado"
+                android:contentDescription="Logo KSHOP"
+                android:layout_marginEnd="8dp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lista de Empleados"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+
+    <!-- Línea divisoria sutil -->
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginBottom="12dp" />
+
+    <!-- Botón Volver -->
+    <Button
+            android:id="@+id/btnVolverpag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Volver"
+            android:textColor="#0056D2"
+            android:background="@drawable/btn_outline_blue"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:layout_gravity="start"
+            android:layout_marginBottom="16dp"
+            android:onClick="volverpag" />
+
+    <!-- Contenedor principal de la lista -->
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFFFFF">
+
+        <!-- RecyclerView con fondo limpio -->
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerEmpleados"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:padding="8dp" />
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+
