@@ -4,7 +4,7 @@
 				android:layout_height="match_parent"
 				android:background="#FFFFFF">
 
-	<!-- CONTENIDO SCROLLEABLE -->
+
 	<ScrollView
 			android:id="@+id/scrollContenido"
 			android:layout_width="match_parent"
@@ -56,10 +56,12 @@
 						android:layout_centerVertical="true"
 						android:src="@drawable/ic_user"
 						android:contentDescription="Usuario"
-						android:padding="6dp" />
+						android:padding="6dp"
+						android:clickable="true"
+						android:focusable="true" />
 			</RelativeLayout>
 
-			<!-- BOTÓN DE MENÚ DEBAJO DEL ENCABEZADO -->
+			<!-- BOTÓN DE MENÚ -->
 			<RelativeLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -95,7 +97,7 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content" />
 
-				<!-- Fila de categorías -->
+
 				<LinearLayout
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
@@ -180,7 +182,7 @@
 				</LinearLayout>
 			</LinearLayout>
 
-			<!-- SECCIÓN SOBRE NOSOTROS -->
+			<!-- SOBRE NOSOTROS -->
 			<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -214,7 +216,7 @@
 		</LinearLayout>
 	</ScrollView>
 
-	<!-- FOOTER FIJO -->
+	<!-- FOOTER -->
 	<LinearLayout
 			android:id="@+id/footer"
 			android:layout_width="match_parent"
