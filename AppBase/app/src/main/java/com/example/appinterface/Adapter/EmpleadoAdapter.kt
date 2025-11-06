@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appinterface.Api.Empleado
+import com.example.appinterface.Empleado
 import com.example.appinterface.R
 
 class EmpleadoAdapter(private val lista: List<Empleado>) :
@@ -30,7 +30,7 @@ class EmpleadoAdapter(private val lista: List<Empleado>) :
         holder.estado.text = "Estado: ${empleado.estado}"
 
         holder.estado.setTextColor(
-            if (empleado.estado.lowercase() == "activo") 0xFF198754.toInt() else 0xFFDC3545.toInt()
+            if (empleado.estado!!.lowercase() == "activo") 0xFF198754.toInt() else 0xFFDC3545.toInt()
         )
     }
 
