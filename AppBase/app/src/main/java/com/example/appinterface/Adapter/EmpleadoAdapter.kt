@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appinterface.Empleado
+import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.R
 
 class EmpleadoAdapter(private val lista: List<Empleado>) :

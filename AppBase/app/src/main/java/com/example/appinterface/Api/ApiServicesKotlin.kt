@@ -1,7 +1,8 @@
 package com.example.appinterface.Api
 
-import com.example.appinterface.Empleado
-import com.example.appinterface.LoginResponse
+import com.example.appinterface.logueo.LoginRequest
+import com.example.appinterface.usuarios.Empleado
+import com.example.appinterface.logueo.LoginResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -13,10 +14,8 @@ interface ApiServicesKotlin {
     @POST("empleados")
     fun crearEmpleado(@Body empleado: Empleado): Call<String>
 
-    @FormUrlEncoded
-    @POST("login")
+    @POST("auth/login")
     fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body request: LoginRequest
     ): Call<LoginResponse>
 }
