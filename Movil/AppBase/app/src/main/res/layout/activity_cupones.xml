@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#FFFFFF">
+
+    <!-- ENCABEZADO -->
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:elevation="4dp">
+
+        <!-- Logo -->
+        <ImageView
+                android:id="@+id/logoKshop"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+
+                android:contentDescription="Logo KSHOP"
+                android:layout_alignParentStart="true" />
+
+        <!-- Título -->
+        <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="K-SHOP"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/logoKshop"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp" />
+
+        <!-- Icono usuario -->
+        <ImageView
+                android:id="@+id/btnUsuario"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="Usuario"
+                android:padding="6dp"
+                android:clickable="true"
+                android:focusable="true" />
+    </RelativeLayout>
+
+    <!-- CONTENIDO -->
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+            <!-- Título de sección -->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lista de Cupones"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp" />
+
+            <!-- Botón negro -->
+            <Button
+                    android:id="@+id/btnMostrar"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mostrar Cupones"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#000000"
+                    android:layout_marginTop="16dp"
+                    android:padding="10dp"
+                    android:textStyle="bold" />
+
+            <!-- Contenedor de cupones -->
+            <LinearLayout
+                    android:id="@+id/contenedorCupones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal" />
+
+            <!-- Mensaje si falla -->
+            <TextView
+                    android:id="@+id/txtCupones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="#444"
+                    android:textSize="16sp"
+                    android:background="#F8F8F8"
+                    android:elevation="2dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="visible" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
