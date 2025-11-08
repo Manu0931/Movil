@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+
+    <ScrollView
+            android:id="@+id/scrollContenidoAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/footerAdmin"
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <!-- ENCABEZADO -->
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:padding="12dp"
+                    android:elevation="4dp">
+
+                <!-- Logo -->
+                <ImageView
+                        android:id="@+id/logoKshop"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@mipmap/logo_kshop"
+                        android:contentDescription="Logo KSHOP"
+                        android:layout_alignParentStart="true" />
+
+                <!-- Título -->
+                <TextView
+                        android:id="@+id/txtTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Panel Administrador"
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/logoKshop"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp" />
+
+                <!-- Icono usuario -->
+                <ImageView
+                        android:id="@+id/btnUsuario"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_user"
+                        android:contentDescription="Usuario"
+                        android:padding="6dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+            </RelativeLayout>
+
+            <!-- BOTÓN DE MENÚ -->
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp">
+
+                <ImageButton
+                        android:id="@+id/btnMenuFlotante"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_fab"
+                        android:src="@drawable/ic_menu"
+                        android:contentDescription="Menú"
+                        android:scaleType="centerInside"
+                        android:padding="8dp" />
+            </RelativeLayout>
+
+            <!-- SECCIÓN DE GESTIÓN -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center_horizontal">
+
+                <TextView
+                        android:text="Gestión del sistema"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3"
+                        android:gravity="center">
+
+                    <!-- CLIENTES -->
+                    <LinearLayout
+                            android:id="@+id/cardClientes"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/bg_card"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                        <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/clientes" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Clientes"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:padding="8dp" />
+                    </LinearLayout>
+
+                    <!-- PRODUCTOS -->
+                    <LinearLayout
+                            android:id="@+id/cardProductos"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/bg_card"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                        <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/productos" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Productos"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:padding="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- SECCIÓN DE GESTIÓN -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center_horizontal">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3"
+                        android:gravity="center">
+
+                    <!-- VENTAS -->
+                    <LinearLayout
+                            android:id="@+id/cardVentas"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/bg_card"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                        <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ventas" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Ventas"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:padding="8dp" />
+                    </LinearLayout>
+                    <!-- INVENTARIO -->
+                    <LinearLayout
+                            android:id="@+id/cardInventario"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_margin="6dp"
+                            android:background="@drawable/bg_card"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                        <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/inventario" />
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Inventario"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:padding="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- INFORMACIÓN -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Acerca del sistema"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginBottom="8dp" />
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Desde este panel, el administrador puede gestionar usuarios, productos, vendedores y revisar la información general de la tienda K-SHOP."
+                        android:textColor="#555555"
+                        android:textSize="14sp" />
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@mipmap/admin_equipo"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Panel Admin" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FOOTER -->
+    <LinearLayout
+            android:id="@+id/footerAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="#000000"
+            android:gravity="center">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="© 2025 K-SHOP - Panel Administrador"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+    </LinearLayout>
+</RelativeLayout>

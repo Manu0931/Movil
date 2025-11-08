@@ -29,19 +29,22 @@ class LoginActivity : AppCompatActivity() {
     private fun doLogin() {
         val email = etEmail.text.toString().trim()
         val password = etPassword.text.toString().trim()
+
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
             return
         }
 
-        api.login(email, password).enqueue(object : Callback<LoginResponse> {
+        val request = LoginRequest(email, password)
+
+        api.login(request).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful && response.body()?.success == true) {
                     val role = response.body()?.rol ?: "cliente"
-                    Toast.makeText(this@LoginActivity, "Bienvenido ${response.body()?.nombre}", Toast.LENGTH_SHORT).show()
-                    // ejemplo de navegación según rol
+                    Toast.makeText(this@LoginActivity, response.body()?.mensaje, Toast.LENGTH_SHORT).show()
+
                     when (role.lowercase()) {
-                        "administrador" -> startActivity(Intent(this@LoginActivity, EmpleadosActivity::class.java))
+                        "empleado", "administrador" -> startActivity(Intent(this@LoginActivity, AdminPanelActivity::class.java))
                         else -> startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     }
                     finish()
@@ -55,4 +58,6 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
+
+
 }
