@@ -1,4 +1,4 @@
-package com.example.appinterface
+package com.example.appinterface.logueo
 
 import com.example.appinterface.Api.RetrofitInstance
 import android.content.Intent
@@ -7,6 +7,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appinterface.MainActivity
+import com.example.appinterface.R
+import com.example.appinterface.usuarios.AdminPanelActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, "Error de conexión: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
             }
         })
+
     }
 
 

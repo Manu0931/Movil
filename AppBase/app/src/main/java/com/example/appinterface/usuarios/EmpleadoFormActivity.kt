@@ -1,4 +1,4 @@
-package com.example.appinterface
+package com.example.appinterface.usuarios
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Api.RetrofitInstance
+import com.example.appinterface.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

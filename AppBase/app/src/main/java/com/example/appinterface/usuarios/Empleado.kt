@@ -1,4 +1,4 @@
-package com.example.appinterface
+package com.example.appinterface.usuarios
 
 data class Empleado(
     val nombre: String,

@@ -8,7 +8,7 @@
         android:orientation="vertical"
         android:background="#FFFFFF"
         android:padding="16dp"
-        tools:context=".EmpleadosActivity">
+        tools:context=".usuarios.EmpleadosActivity">
 
     <!-- Encabezado estilo KSHOP -->
     <LinearLayout
