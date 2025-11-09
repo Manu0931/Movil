@@ -16,13 +16,12 @@ class AdminPanelActivity : AppCompatActivity() {
         binding = ActivityAdminPanelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtener el nombre o correo del admin
         val adminName = intent.getStringExtra("nombre") ?: "Administrador"
         Toast.makeText(this, "Bienvenido $adminName", Toast.LENGTH_SHORT).show()
 
         // Listeners para cada card
         binding.cardClientes.setOnClickListener {
-            startActivity(Intent(this, EmpleadosActivity::class.java))
+            startActivity(Intent(this, UsuariosActivity::class.java))
         }
 
         binding.cardProductos.setOnClickListener {

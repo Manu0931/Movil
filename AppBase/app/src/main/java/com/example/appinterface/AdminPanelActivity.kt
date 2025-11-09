@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
+import com.example.appinterface.usuarios.UsuariosActivity
 
 class AdminPanelActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class AdminPanelActivity : AppCompatActivity() {
 
         // Listeners para cada card
         binding.cardClientes.setOnClickListener {
-            startActivity(Intent(this, EmpleadosActivity::class.java))
+            startActivity(Intent(this, UsuariosActivity::class.java))
         }
 
         binding.cardProductos.setOnClickListener {

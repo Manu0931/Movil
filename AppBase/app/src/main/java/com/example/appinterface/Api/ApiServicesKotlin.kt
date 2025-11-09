@@ -14,6 +14,17 @@ interface ApiServicesKotlin {
     @POST("empleados")
     fun crearEmpleado(@Body empleado: Empleado): Call<String>
 
+    @PUT("empleados/{id}")
+    fun actualizarEmpleado(
+        @Path("id") id: Int,
+        @Body empleado: Empleado
+    ): Call<String>
+
+    @DELETE("empleados/{id}")
+    fun eliminarEmpleado(
+        @Path("id") id: Int
+    ): Call<String>
+
     @POST("auth/login")
     fun login(
         @Body request: LoginRequest
