@@ -18,7 +18,7 @@
 		<activity android:name=".LoginActivity" android:exported="false" />
 		<activity android:name=".EmpleadosActivity" android:exported="false" />
 		<activity android:name=".EmpleadoFormActivity" android:exported="false" />
-		<activity android:name=".ProductosActivity" android:exported="false" />
+		<activity android:name=".producto.ProductosActivity" android:exported="false" />
 		<activity android:name=".ServiciosActivity" android:exported="false" />
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />
 

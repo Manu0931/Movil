@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
+import com.example.appinterface.producto.ProductosActivity
+
 
 class AdminPanelActivity : AppCompatActivity() {
 
