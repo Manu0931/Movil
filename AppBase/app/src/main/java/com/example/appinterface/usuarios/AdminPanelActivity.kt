@@ -1,11 +1,11 @@
-package com.example.appinterface
+package com.example.appinterface.usuarios
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appinterface.ProductosActivity
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
-import com.example.appinterface.usuarios.UsuariosActivity
 
 class AdminPanelActivity : AppCompatActivity() {
 
@@ -16,7 +16,6 @@ class AdminPanelActivity : AppCompatActivity() {
         binding = ActivityAdminPanelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtener el nombre o correo del admin
         val adminName = intent.getStringExtra("nombre") ?: "Administrador"
         Toast.makeText(this, "Bienvenido $adminName", Toast.LENGTH_SHORT).show()
 

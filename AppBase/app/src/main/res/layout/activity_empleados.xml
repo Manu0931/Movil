@@ -1,76 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        tools:context=".EmpleadosActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                tools:context=".usuarios.EmpleadosActivity">
 
-    <!-- Encabezado estilo KSHOP -->
-    <LinearLayout
+    <ScrollView
+            android:id="@+id/scrollEmpleados"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingBottom="8dp">
+            android:layout_height="match_parent"
+            android:layout_above="@+id/footerEmpleados"
+            android:fillViewport="true">
 
-        <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@mipmap/icono_usuario"
-                android:contentDescription="Logo KSHOP"
-                android:layout_marginEnd="8dp" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <!-- ENCABEZADO -->
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:padding="12dp"
+                    android:elevation="4dp">
+
+                <ImageView
+                        android:id="@+id/logoKshop"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@mipmap/logo_kshop"
+                        android:contentDescription="Logo KSHOP"
+                        android:layout_alignParentStart="true" />
+
+                <TextView
+                        android:id="@+id/txtTituloEmpleados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Módulo de Empleados"
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/logoKshop"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp" />
+
+                <ImageView
+                        android:id="@+id/btnCerrarSesionEmpleados"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_logout"
+                        android:contentDescription="Cerrar sesión"
+                        android:padding="6dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+            </RelativeLayout>
+
+            <!-- CONTENIDO -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:gravity="center">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Administra la información de los empleados de K-SHOP desde esta sección."
+                        android:textColor="#555555"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="24dp" />
+
+                <LinearLayout
+                        android:id="@+id/btnVolverpag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp"
+                        android:background="@drawable/btn_volver"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginBottom="20dp">
+
+                    <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_back"
+                            android:contentDescription="Volver"
+                            android:tint="#FFFFFF"
+                            android:layout_marginEnd="6dp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Volver"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- CARD CON LISTA DE EMPLEADOS -->
+                <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="4dp"
+                        android:radius="16dp"
+                        android:padding="12dp"
+                        app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Lista de Empleados"
+                                android:textColor="#000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center" />
+
+                        <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="#E0E0E0"
+                                android:layout_marginBottom="8dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerEmpleados"
+                                android:layout_width="match_parent"
+                                android:layout_height="400dp"
+                                android:scrollbars="vertical"
+                                android:padding="8dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- CONSEJO FINAL -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="💡 Consejo: Mantén actualizada la información de los empleados para un mejor control."
+                        android:textColor="#555555"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="24dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FOOTER -->
+    <LinearLayout
+            android:id="@+id/footerEmpleados"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="#000000"
+            android:gravity="center">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lista de Empleados"
-                android:textColor="#000000"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium" />
+                android:text="© 2025 K-SHOP - Módulo Empleados"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
     </LinearLayout>
 
-    <!-- Línea divisoria sutil -->
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E0E0E0"
-            android:layout_marginBottom="12dp" />
-
-    <!-- Botón Volver -->
-    <Button
-            android:id="@+id/btnVolverpag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="← Volver"
-            android:textColor="#0056D2"
-            android:background="@drawable/btn_outline_blue"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="8dp"
-            android:layout_gravity="start"
-            android:layout_marginBottom="16dp"
-            android:onClick="volverpag" />
-
-    <!-- Contenedor principal de la lista -->
-    <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:backgroundTint="#FFFFFF">
-
-        <!-- RecyclerView con fondo limpio -->
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerEmpleados"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                android:padding="8dp" />
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
-
+</RelativeLayout>
