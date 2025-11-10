@@ -1,8 +1,8 @@
 package com.example.appinterface.Api
 
-import com.example.appinterface.LoginRequest
-import com.example.appinterface.Empleado
-import com.example.appinterface.LoginResponse
+import com.example.appinterface.Producto
+import com.example.appinterface.usuarios.Empleado
+import com.example.appinterface.logueo.LoginResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -16,6 +16,9 @@ interface ApiServicesKotlin {
 
     @POST("auth/login")
     fun login(
-        @Body request: LoginRequest
+        @Body request: com.example.appinterface.logueo.LoginRequest
     ): Call<LoginResponse>
+
+    @GET("productos")
+    fun listarProductos(): Call<List<Producto>>
 }

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.appinterface.ProductosActivity
+import com.example.appinterface.producto.ProductosActivity
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
 
 class AdminPanelActivity : AppCompatActivity() {
