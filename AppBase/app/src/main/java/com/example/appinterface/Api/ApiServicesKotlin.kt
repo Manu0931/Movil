@@ -3,7 +3,6 @@ package com.example.appinterface.Api
 import com.example.appinterface.LoginRequest
 import com.example.appinterface.Empleado
 import com.example.appinterface.LoginResponse
-import com.example.appinterface.Producto
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -19,7 +18,4 @@ interface ApiServicesKotlin {
     fun login(
         @Body request: LoginRequest
     ): Call<LoginResponse>
-
-    @GET("productos")
-    fun listarProductos(): Call<List<Producto>>
 }

@@ -1,6 +1,7 @@
-package com.example.appinterface
+package com.example.appinterface.usuarios
 
 data class Empleado(
+    val idEmpleado: Int? = null,
     val nombre: String,
     val cargo: String,
     val correo: String,

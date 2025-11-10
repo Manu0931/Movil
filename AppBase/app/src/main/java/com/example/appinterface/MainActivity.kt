@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appinterface.logueo.LoginActivity
+import com.example.appinterface.usuarios.EmpleadoFormActivity
+import com.example.appinterface.usuarios.EmpleadosActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,11 +18,10 @@ class MainActivity : AppCompatActivity() {
         val btnUsuario: ImageView = findViewById(R.id.btnUsuario)
 
         btnUsuario.setOnClickListener {
-            // Mostrar menú emergente al presionar el icono
+            // menú emergente
             val popup = PopupMenu(this, btnUsuario)
             popup.menuInflater.inflate(R.menu.menu_usuario, popup.menu)
 
-            // Acción al seleccionar un ítem
             popup.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.menu_iniciar_sesion -> {

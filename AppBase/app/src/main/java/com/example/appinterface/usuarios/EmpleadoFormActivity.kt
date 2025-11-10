@@ -1,11 +1,13 @@
-package com.example.appinterface
+package com.example.appinterface.usuarios
 
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Api.RetrofitInstance
+import com.example.appinterface.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +20,6 @@ class EmpleadoFormActivity : AppCompatActivity() {
     private lateinit var cargo: EditText
     private lateinit var correo: EditText
     private lateinit var contrasena: EditText
-    private lateinit var estado: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,10 @@ class EmpleadoFormActivity : AppCompatActivity() {
         cargo = findViewById(R.id.cargo)
         correo = findViewById(R.id.correo)
         contrasena = findViewById(R.id.contrasena)
-        estado = findViewById(R.id.estado)
+        val btnVolver = findViewById<ImageButton>(R.id.btnVolver)
+        btnVolver.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     fun crearEmpleado(v: View) {
@@ -40,7 +44,7 @@ class EmpleadoFormActivity : AppCompatActivity() {
             correo = correo.text.toString().trim(),
             contrasena = contrasena.text.toString().trim(),
             fechaContratacion = fechaActual,
-            estado = estado.text.toString().ifEmpty { "Activo" }
+            estado = "Activo"
         )
 
         if (empleado.nombre.isEmpty() || empleado.cargo.isEmpty() ||
@@ -83,11 +87,6 @@ class EmpleadoFormActivity : AppCompatActivity() {
         cargo.text.clear()
         correo.text.clear()
         contrasena.text.clear()
-        estado.text.clear()
-    }
-
-    fun volver(v: View) {
-        onBackPressedDispatcher.onBackPressed()
     }
 }
 
