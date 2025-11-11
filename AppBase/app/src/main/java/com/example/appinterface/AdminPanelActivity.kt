@@ -27,10 +27,11 @@ class AdminPanelActivity : AppCompatActivity() {
         }
 
         binding.cardProductos.setOnClickListener {
-            startActivity(Intent(this, ProductosActivity::class.java))
-        }
+            val intent = Intent(this, ProductosActivity::class.java)
+            startActivity(intent)
+            }
 
-        binding.cardInventario.setOnClickListener {
+            binding.cardInventario.setOnClickListener {
             Toast.makeText(this, "Módulo de Inventario (en construcción)", Toast.LENGTH_SHORT).show()
         }
 

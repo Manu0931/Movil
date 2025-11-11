@@ -1,4 +1,4 @@
-package com.example.appinterface
+package com.example.appinterface.producto
 
 data class Producto(
     val nombre: String,

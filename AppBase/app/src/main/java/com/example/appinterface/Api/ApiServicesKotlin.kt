@@ -1,8 +1,8 @@
 package com.example.appinterface.Api
 
-import com.example.appinterface.Producto
 import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
+import com.example.appinterface.producto.Producto
 import retrofit2.Call
 import retrofit2.http.*
 
