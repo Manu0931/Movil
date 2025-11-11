@@ -48,16 +48,18 @@
                         android:layout_marginStart="8dp" />
 
                 <ImageView
-                        android:id="@+id/btnCerrarSesionEmpleados"
+                        android:id="@+id/btnVolverEmpleados"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_logout"
-                        android:contentDescription="Cerrar sesión"
+                        android:src="@drawable/ic_arrow_back"
+                        android:contentDescription="Volver"
                         android:padding="6dp"
                         android:clickable="true"
-                        android:focusable="true" />
+                        android:focusable="true"
+                        android:tint="#000000"
+                        android:layout_marginEnd="10dp" />
             </RelativeLayout>
 
             <!-- CONTENIDO -->
@@ -76,36 +78,6 @@
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:layout_marginBottom="24dp" />
-
-                <LinearLayout
-                        android:id="@+id/btnVolverpag"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="10dp"
-                        android:background="@drawable/btn_volver"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_marginBottom="20dp">
-
-                    <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_arrow_back"
-                            android:contentDescription="Volver"
-                            android:tint="#FFFFFF"
-                            android:layout_marginEnd="6dp" />
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Volver"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                </LinearLayout>
 
                 <!-- CARD CON LISTA DE EMPLEADOS -->
                 <androidx.cardview.widget.CardView
