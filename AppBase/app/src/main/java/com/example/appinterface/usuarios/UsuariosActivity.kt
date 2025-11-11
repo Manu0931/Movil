@@ -56,11 +56,11 @@ class UsuariosActivity : AppCompatActivity() {
         }
 
         binding.btnConsultarClientes.setOnClickListener {
-            Toast.makeText(this, "Consultar Clientes", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ClientesActivity::class.java))
         }
 
         binding.btnAgregarClientes.setOnClickListener {
-            Toast.makeText(this, "Agregar Cliente", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ClientesFormActivity::class.java))
         }
 
         binding.btnConsultarEmpleados.setOnClickListener {
