@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                tools:context=".usuarios.ClientesActivity">
+
+    <ScrollView
+            android:id="@+id/scrollClientes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/footerClientes"
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <!-- ENCABEZADO -->
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:padding="12dp"
+                    android:elevation="4dp">
+
+                <ImageView
+                        android:id="@+id/logoKshop"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@mipmap/logo_kshop"
+                        android:contentDescription="Logo KSHOP"
+                        android:layout_alignParentStart="true" />
+
+                <TextView
+                        android:id="@+id/txtTituloClientes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Módulo de Clientes"
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/logoKshop"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp" />
+
+                <ImageView
+                        android:id="@+id/btnVolverClientes"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_back"
+                        android:contentDescription="Volver"
+                        android:padding="6dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:tint="#000000"
+                        android:layout_marginEnd="10dp" />
+            </RelativeLayout>
+
+            <!-- CONTENIDO -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:gravity="center">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Administra la información de los clientes de K-SHOP desde esta sección."
+                        android:textColor="#555555"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="24dp" />
+
+                <!-- CARD CON LISTA DE CLIENTES -->
+                <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="4dp"
+                        android:radius="16dp"
+                        android:padding="12dp"
+                        app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Lista de Clientes"
+                                android:textColor="#000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center" />
+
+                        <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="#E0E0E0"
+                                android:layout_marginBottom="8dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerClientes"
+                                android:layout_width="match_parent"
+                                android:layout_height="400dp"
+                                android:scrollbars="vertical"
+                                android:padding="8dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- CONSEJO FINAL -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="💡 Consejo: Mantén actualizada la información de los clientes para un mejor control."
+                        android:textColor="#555555"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="24dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FOOTER -->
+    <LinearLayout
+            android:id="@+id/footerClientes"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="#000000"
+            android:gravity="center">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="© 2025 K-SHOP - Módulo Clientes"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+    </LinearLayout>
+
+</RelativeLayout>
