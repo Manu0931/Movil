@@ -20,4 +20,5 @@ object RetrofitInstance {
         retrofit.create(ApiServicesKotlin::class.java)
     }
 
+
 }

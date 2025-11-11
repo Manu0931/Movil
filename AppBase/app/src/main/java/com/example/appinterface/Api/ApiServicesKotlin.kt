@@ -1,8 +1,12 @@
 package com.example.appinterface.Api
 
+import com.example.appinterface.logueo.LoginRequest
 import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
 import com.example.appinterface.producto.Producto
+import com.example.appinterface.logueo.registro.RegistroResponse
+import com.example.appinterface.usuarios.cliente
+import com.example.appinterface.modelos.RegistroRequest
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -14,9 +18,39 @@ interface ApiServicesKotlin {
     @POST("empleados")
     fun crearEmpleado(@Body empleado: Empleado): Call<String>
 
+    @PUT("empleados/{id}")
+    fun actualizarEmpleado(
+        @Path("id") id: Int,
+        @Body empleado: Empleado
+    ): Call<String>
+
+    @DELETE("empleados/{id}")
+    fun eliminarEmpleado(
+        @Path("id") id: Int
+    ): Call<String>
+
+    @GET("clientes")
+    fun obtenerClientes(): Call<List<cliente>>
+
+    @POST("clientes")
+    fun registrarCliente(@Body request: RegistroRequest): Call<RegistroResponse>
+
+
+    @PUT("clientes/{id}")
+    fun actualizarClientes(
+        @Path("id") id: Int,
+        @Body empleado: Empleado
+    ): Call<String>
+
+    @DELETE("clientes/{id}")
+    fun eliminarClientes(
+        @Path("id") id: Int
+    ): Call<String>
+
+
     @POST("auth/login")
     fun login(
-        @Body request: com.example.appinterface.logueo.LoginRequest
+        @Body request: LoginRequest
     ): Call<LoginResponse>
 
     @GET("productos")

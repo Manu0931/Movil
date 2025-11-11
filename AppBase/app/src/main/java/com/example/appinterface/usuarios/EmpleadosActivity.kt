@@ -1,6 +1,7 @@
 package com.example.appinterface.usuarios
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,10 +22,16 @@ class EmpleadosActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerEmpleados)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        findViewById<ImageView>(R.id.btnVolverEmpleados).setOnClickListener {
+            finish()
+        }
+
+
         RetrofitInstance.empleadosApi.getEmpleados().enqueue(object : Callback<List<Empleado>> {
             override fun onResponse(call: Call<List<Empleado>>, response: Response<List<Empleado>>) {
-                if (response.isSuccessful && !response.body().isNullOrEmpty()) {
-                    recyclerView.adapter = EmpleadoAdapter(response.body()!!)
+                val empleados = response.body()
+                if (response.isSuccessful && !empleados.isNullOrEmpty()) {
+                    recyclerView.adapter = EmpleadoAdapter(empleados.toMutableList(), this@EmpleadosActivity)
                 } else {
                     Toast.makeText(this@EmpleadosActivity, "No hay empleados disponibles", Toast.LENGTH_SHORT).show()
                 }
@@ -34,9 +41,6 @@ class EmpleadosActivity : AppCompatActivity() {
                 Toast.makeText(this@EmpleadosActivity, "Error de conexión: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
             }
         })
-    }
 
-    fun volverpag(v: android.view.View) {
-        onBackPressedDispatcher.onBackPressed()
     }
 }
