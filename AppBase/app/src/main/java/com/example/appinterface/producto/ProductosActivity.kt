@@ -1,6 +1,7 @@
 package com.example.appinterface.producto
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,6 +26,9 @@ class ProductosActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.RecyProductos)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        findViewById<ImageView>(R.id.btnVolverProductos).setOnClickListener {
+            finish()
+        }
 
 
         cargarProductosDesdeApi()
