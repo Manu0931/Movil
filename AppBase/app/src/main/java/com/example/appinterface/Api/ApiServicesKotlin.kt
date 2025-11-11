@@ -4,7 +4,7 @@ import com.example.appinterface.logueo.LoginRequest
 import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
 import com.example.appinterface.logueo.registro.RegistroResponse
-import com.example.appinterface.modelos.Cliente
+import com.example.appinterface.usuarios.cliente
 import com.example.appinterface.modelos.RegistroRequest
 import retrofit2.Call
 import retrofit2.http.*
@@ -13,9 +13,6 @@ interface ApiServicesKotlin {
 
     @GET("empleados")
     fun getEmpleados(): Call<List<Empleado>>
-
-    @GET("empleados/{id}")
-    fun getEmpleadoById(@Path("id") id: Int): Call<Empleado>
 
     @POST("empleados")
     fun crearEmpleado(@Body empleado: Empleado): Call<String>
@@ -32,10 +29,22 @@ interface ApiServicesKotlin {
     ): Call<String>
 
     @GET("clientes")
-    fun obtenerClientes(): Call<List<Cliente>>
+    fun obtenerClientes(): Call<List<cliente>>
 
     @POST("clientes")
     fun registrarCliente(@Body request: RegistroRequest): Call<RegistroResponse>
+
+
+    @PUT("clientes/{id}")
+    fun actualizarClientes(
+        @Path("id") id: Int,
+        @Body empleado: Empleado
+    ): Call<String>
+
+    @DELETE("clientes/{id}")
+    fun eliminarClientes(
+        @Path("id") id: Int
+    ): Call<String>
 
 
     @POST("auth/login")

@@ -1,6 +1,6 @@
-package com.example.appinterface.modelos
+package com.example.appinterface.usuarios
 
-data class Cliente(
+data class cliente(
     val ID_Cliente: Int? = null,
     val Nombre: String,
     val Correo: String,
