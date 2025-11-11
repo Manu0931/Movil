@@ -35,4 +35,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingresar" />
+
+    <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:layout_marginTop="12dp" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+        <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Olvidaste tu contraseña?"
+                android:textColor="#1976D2"
+                android:textSize="14sp"
+                android:padding="6dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+        <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No tienes cuenta? Regístrate"
+                android:textColor="#1976D2"
+                android:textSize="14sp"
+                android:padding="6dp"
+                android:clickable="true"
+                android:focusable="true" />
+    </LinearLayout>
 </LinearLayout>
