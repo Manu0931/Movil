@@ -45,7 +45,4 @@ class EnviosActivity : AppCompatActivity() {
         })
     }
 
-    fun volverpag(v: android.view.View) {
-        onBackPressedDispatcher.onBackPressed()
-    }
 }
