@@ -40,19 +40,19 @@ class ClienteAdapter(
         val clienteActual = lista[position]
         val pos = position
 
-        holder.nombre.text = clienteActual.Nombre
-        holder.correo.text = clienteActual.Correo
-        holder.estado.text = "Estado: ${clienteActual.Estado}"
+        holder.nombre.text = clienteActual.nombre
+        holder.correo.text = clienteActual.correo
+        holder.estado.text = "Estado: ${clienteActual.estado}"
 
         holder.estado.setTextColor(
-            if (clienteActual.Estado.equals("Activo", ignoreCase = true)) 0xFF198754.toInt()
+            if (clienteActual.estado.equals("Activo", ignoreCase = true)) 0xFF198754.toInt()
             else 0xFFD32F2F.toInt()
         )
 
         // Editar cliente
         holder.btnEditar.setOnClickListener {
             val intent = Intent(context, ("ClienteEditarActivity")::class.java)
-            intent.putExtra("idCliente", clienteActual.ID_Cliente)
+            intent.putExtra("idCliente", clienteActual.idCliente)
             context.startActivity(intent)
         }
 
@@ -60,11 +60,11 @@ class ClienteAdapter(
         holder.btnEliminar.setOnClickListener {
             AlertDialog.Builder(context)
                 .setTitle("Confirmar eliminación")
-                .setMessage("¿Deseas eliminar a ${clienteActual.Nombre}?")
+                .setMessage("¿Deseas eliminar a ${clienteActual.nombre}?")
                 .setPositiveButton("Sí") { dialog, _ ->
-                    RetrofitInstance.empleadosApi.eliminarClientes(clienteActual.ID_Cliente!!)
-                        .enqueue(object : Callback<String> {
-                            override fun onResponse(call: Call<String>, response: Response<String>) {
+                    RetrofitInstance.empleadosApi.eliminarClientes(clienteActual.idCliente!!)
+                        .enqueue(object : Callback<cliente> {
+                            override fun onResponse(call: Call<cliente>, response: Response<cliente>) {
                                 if (response.isSuccessful) {
                                     lista.removeAt(pos)
                                     notifyItemRemoved(pos)
@@ -75,7 +75,7 @@ class ClienteAdapter(
                                 }
                             }
 
-                            override fun onFailure(call: Call<String>, t: Throwable) {
+                            override fun onFailure(call: Call<cliente>, t: Throwable) {
                                 Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                             }
                         })

@@ -7,6 +7,7 @@ import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
 import com.example.appinterface.logueo.registro.RegistroResponse
 import com.example.appinterface.modelos.RegistroRequest
+import com.example.appinterface.usuarios.cliente
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,20 +38,43 @@ class RegistroActivity : AppCompatActivity() {
 
             val request = RegistroRequest(nombre, correo = email, contrasena = password, documento = documento, telefono = telefono)
 
-            RetrofitInstance.empleadosApi.registrarCliente(request).enqueue(object : Callback<RegistroResponse> {
-                override fun onResponse(call: Call<RegistroResponse>, response: Response<RegistroResponse>) {
-                    if (response.isSuccessful && response.body()?.success == true) {
-                        Toast.makeText(this@RegistroActivity, "Registro exitoso", Toast.LENGTH_LONG).show()
-                        finish()
-                    } else {
-                        Toast.makeText(this@RegistroActivity, response.body()?.mensaje ?: "Error al registrar", Toast.LENGTH_LONG).show()
+            RetrofitInstance.empleadosApi.registrarCliente(request)
+                .enqueue(object : Callback<cliente> {
+                    override fun onResponse(call: Call<cliente>, response: Response<cliente>) {
+                        if (response.isSuccessful) {
+                            val clienteCreado = response.body()
+                            if (clienteCreado != null) {
+                                Toast.makeText(
+                                    this@RegistroActivity,
+                                    "Cliente registrado correctamente",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                finish()
+                            } else {
+                                Toast.makeText(
+                                    this@RegistroActivity,
+                                    "No se recibió información del cliente",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            Toast.makeText(
+                                this@RegistroActivity,
+                                "Error al registrar cliente (${response.code()})",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<RegistroResponse>, t: Throwable) {
-                    Toast.makeText(this@RegistroActivity, "Error: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
-                }
-            })
+                    override fun onFailure(call: Call<cliente>, t: Throwable) {
+                        Toast.makeText(
+                            this@RegistroActivity,
+                            "Error: ${t.localizedMessage}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+
         }
     }
 }
