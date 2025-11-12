@@ -5,6 +5,7 @@ import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
 import com.example.appinterface.logueo.registro.RegistroResponse
 import com.example.appinterface.usuarios.cliente
+import com.example.appinterface.Cupones.Cupon
 import com.example.appinterface.modelos.RegistroRequest
 import com.example.appinterface.Empleado
 import com.example.appinterface.LoginResponse
@@ -49,6 +50,9 @@ interface ApiServicesKotlin {
     fun eliminarClientes(
         @Path("id") id: Int
     ): Call<String>
+
+    @GET("cupon")
+    fun getCupones(): Call<List<Cupon>>
 
 
     @POST("auth/login")
