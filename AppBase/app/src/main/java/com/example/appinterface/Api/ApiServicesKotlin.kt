@@ -7,8 +7,6 @@ import com.example.appinterface.logueo.registro.RegistroResponse
 import com.example.appinterface.usuarios.cliente
 import com.example.appinterface.Cupones.Cupon
 import com.example.appinterface.modelos.RegistroRequest
-import com.example.appinterface.Empleado
-import com.example.appinterface.LoginResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -57,7 +55,8 @@ interface ApiServicesKotlin {
 
     @POST("auth/login")
     fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body request: LoginRequest
     ): Call<LoginResponse>
+
+
 }
