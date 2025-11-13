@@ -71,8 +71,11 @@ class AdminPanelActivity : AppCompatActivity() {
             Toast.makeText(this, "Módulo de Inventario (en construcción)", Toast.LENGTH_SHORT).show()
         }
 
+        binding.cardInventario.setOnClickListener {
+            val intent = Intent(this, InventarioActivity::class.java)
+            startActivity(intent)
         binding.cardVentas.setOnClickListener {
             Toast.makeText(this, "Módulo de Ventas (en construcción)", Toast.LENGTH_SHORT).show()
         }
     }
-}
+}}

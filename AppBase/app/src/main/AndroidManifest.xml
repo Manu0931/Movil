@@ -30,6 +30,11 @@
 		<activity android:name=".producto.EditarProductoActivity" android:exported="false"  />
 		<activity android:name=".ServiciosActivity" android:exported="false" />
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />
+		<activity android:name=".usuarios.InventarioActivity" />
+		<activity android:name=".usuarios.CuponesActivity" />
+		<activity android:name=".Cupones.ListaCuponesActivity" />
+
+
 
 		<activity
 				android:name=".MainActivity"
