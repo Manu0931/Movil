@@ -16,7 +16,7 @@ interface ApiServicesKotlin {
     fun getEmpleados(): Call<List<Empleado>>
 
     @POST("empleados")
-    fun crearEmpleado(@Body empleado: Empleado): Call<String>
+    fun crearEmpleado(@Body empleado: Empleado): Call<Empleado>
 
     @FormUrlEncoded
     @POST("login")
@@ -24,30 +24,30 @@ interface ApiServicesKotlin {
     fun actualizarEmpleado(
         @Path("id") id: Int,
         @Body empleado: Empleado
-    ): Call<String>
+    ): Call<Empleado>
 
     @DELETE("empleados/{id}")
     fun eliminarEmpleado(
         @Path("id") id: Int
-    ): Call<String>
+    ): Call<Empleado>
 
     @GET("clientes")
     fun obtenerClientes(): Call<List<cliente>>
 
     @POST("clientes")
-    fun registrarCliente(@Body request: RegistroRequest): Call<RegistroResponse>
+    fun registrarCliente(@Body request: RegistroRequest): Call<cliente>
 
 
     @PUT("clientes/{id}")
     fun actualizarClientes(
         @Path("id") id: Int,
         @Body empleado: Empleado
-    ): Call<String>
+    ): Call<cliente>
 
     @DELETE("clientes/{id}")
     fun eliminarClientes(
         @Path("id") id: Int
-    ): Call<String>
+    ): Call<cliente>
 
     @GET("cupon")
     fun getCupones(): Call<List<Cupon>>
