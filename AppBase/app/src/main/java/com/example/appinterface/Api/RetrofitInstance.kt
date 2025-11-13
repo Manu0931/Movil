@@ -24,4 +24,5 @@ object RetrofitInstance {
     val pedidoApi: ApiServicesKotlin by lazy {
         retrofit.create(ApiServicesKotlin::class.java)
     }
+
 }

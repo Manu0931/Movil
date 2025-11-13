@@ -5,13 +5,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF"
-                tools:context=".usuarios.EmpleadosActivity">
+                tools:context=".usuarios.ClientesActivity">
 
     <ScrollView
-            android:id="@+id/scrollEmpleados"
+            android:id="@+id/scrollClientes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/footerEmpleados"
+            android:layout_above="@+id/footerClientes"
             android:fillViewport="true">
 
         <LinearLayout
@@ -36,10 +36,10 @@
                         android:layout_alignParentStart="true" />
 
                 <TextView
-                        android:id="@+id/txtTituloEmpleados"
+                        android:id="@+id/txtTituloClientes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Módulo de Empleados"
+                        android:text="Módulo de Clientes"
                         android:textColor="#000000"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -48,7 +48,7 @@
                         android:layout_marginStart="8dp" />
 
                 <ImageView
-                        android:id="@+id/btnVolverEmpleados"
+                        android:id="@+id/btnVolverClientes"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_alignParentEnd="true"
@@ -73,13 +73,13 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Administra la información de los empleados de K-SHOP desde esta sección."
+                        android:text="Administra la información de los clientes de K-SHOP desde esta sección."
                         android:textColor="#555555"
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:layout_marginBottom="24dp" />
 
-                <!-- CARD CON LISTA DE EMPLEADOS -->
+                <!-- CARD CON LISTA DE CLIENTES -->
                 <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Lista de Empleados"
+                                android:text="Lista de Clientes"
                                 android:textColor="#000000"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
@@ -111,7 +111,7 @@
                                 android:layout_marginBottom="8dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerEmpleados"
+                                android:id="@+id/recyclerClientes"
                                 android:layout_width="match_parent"
                                 android:layout_height="400dp"
                                 android:scrollbars="vertical"
@@ -123,7 +123,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="💡 Consejo: Mantén actualizada la información de los empleados para un mejor control."
+                        android:text="💡 Consejo: Mantén actualizada la información de los clientes para un mejor control."
                         android:textColor="#555555"
                         android:textSize="14sp"
                         android:gravity="center"
@@ -134,7 +134,7 @@
 
     <!-- FOOTER -->
     <LinearLayout
-            android:id="@+id/footerEmpleados"
+            android:id="@+id/footerClientes"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_alignParentBottom="true"
@@ -145,7 +145,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="© 2025 K-SHOP - Módulo Empleados"
+                android:text="© 2025 K-SHOP - Módulo Clientes"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
     </LinearLayout>

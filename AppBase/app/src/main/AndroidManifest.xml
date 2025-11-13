@@ -14,11 +14,17 @@
 			android:theme="@style/Theme.AppInterface"
 			tools:targetApi="31">
 
+		<activity android:name=".logueo.RegistroActivity" />
+		<activity android:name=".logueo.RecuperarPasswordActivity" />
 		<activity android:name=".usuarios.UsuariosActivity" />
+		<activity android:name=".usuarios.PanelCliente" />
+		<activity android:name=".usuarios.EditarEmpleadoActivity" />
 		<activity android:name=".usuarios.AdminPanelActivity"/>
 		<activity android:name=".logueo.LoginActivity" android:exported="false" />
 		<activity android:name=".usuarios.EmpleadosActivity" android:exported="false" />
 		<activity android:name=".usuarios.EmpleadoFormActivity" android:exported="false" />
+		<activity android:name=".usuarios.ClientesFormActivity" android:exported="false" />
+		<activity android:name=".usuarios.ClientesActivity" android:exported="false" />
 		<activity android:name=".ProductosActivity" android:exported="false" />
 		<activity android:name=".ServiciosActivity" android:exported="false" />
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />

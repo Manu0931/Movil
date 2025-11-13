@@ -1,40 +1,63 @@
-    package com.example.appinterface.Api
+package com.example.appinterface.Api
 
-    import com.example.appinterface.Ventas.Envio
-    import com.example.appinterface.Ventas.Pedido
-    import com.example.appinterface.logueo.LoginRequest
-    import com.example.appinterface.usuarios.Empleado
-    import com.example.appinterface.logueo.LoginResponse
-    import retrofit2.Call
-    import retrofit2.http.*
+import com.example.appinterface.logueo.LoginRequest
+import com.example.appinterface.usuarios.Empleado
+import com.example.appinterface.logueo.LoginResponse
+import com.example.appinterface.logueo.registro.RegistroResponse
+import com.example.appinterface.usuarios.cliente
+import com.example.appinterface.modelos.RegistroRequest
+import retrofit2.Call
+import retrofit2.http.*
+import com.example.appinterface.Ventas.Envio
+import com.example.appinterface.Ventas.Pedido
 
-    interface ApiServicesKotlin {
 
-        @GET("empleados")
-        fun getEmpleados(): Call<List<Empleado>>
+interface ApiServicesKotlin {
 
-        @POST("empleados")
-        fun crearEmpleado(@Body empleado: Empleado): Call<String>
+    @GET("empleados")
+    fun getEmpleados(): Call<List<Empleado>>
 
-        @PUT("empleados/{id}")
-        fun actualizarEmpleado(
-            @Path("id") id: Int,
-            @Body empleado: Empleado
-        ): Call<String>
+    @POST("empleados")
+    fun crearEmpleado(@Body empleado: Empleado): Call<Empleado>
 
-        @DELETE("empleados/{id}")
-        fun eliminarEmpleado(
-            @Path("id") id: Int
-        ): Call<String>
+    @PUT("empleados/{id}")
+    fun actualizarEmpleado(
+        @Path("id") id: Int,
+        @Body empleado: Empleado
+    ): Call<Empleado>
 
-        @POST("auth/login")
-        fun login(
-            @Body request: LoginRequest
-        ): Call<LoginResponse>
+    @DELETE("empleados/{id}")
+    fun eliminarEmpleado(
+        @Path("id") id: Int
+    ): Call<Empleado>
 
-        @GET("envio")
-        fun getEnvio(): Call<List<Envio>>
+    @GET("clientes")
+    fun obtenerClientes(): Call<List<cliente>>
 
-        @GET("pedido")
-        fun getPedido(): Call<List<Pedido>>
+    @POST("clientes")
+    fun registrarCliente(@Body request: RegistroRequest): Call<cliente>
+
+
+    @PUT("clientes/{id}")
+    fun actualizarClientes(
+        @Path("id") id: Int,
+        @Body empleado: Empleado
+    ): Call<cliente>
+
+    @DELETE("clientes/{id}")
+    fun eliminarClientes(
+        @Path("id") id: Int
+    ): Call<cliente>
+
+
+    @POST("auth/login")
+    fun login(
+        @Body request: LoginRequest
+    ): Call<LoginResponse>
+
+    @GET("envio")
+    fun getEnvio(): Call<List<Envio>>
+
+    @GET("pedido")
+    fun getPedido(): Call<List<Pedido>>
     }
