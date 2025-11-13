@@ -16,5 +16,9 @@ object RetrofitInstance {
     val empleadosApi: ApiServicesKotlin by lazy {
         retrofit.create(ApiServicesKotlin::class.java)
     }
+    val productosApi: ApiServicesKotlin by lazy {
+        retrofit.create(ApiServicesKotlin::class.java)
+    }
+
 
 }
