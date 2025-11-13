@@ -7,6 +7,8 @@ import com.example.appinterface.producto.Producto
 import com.example.appinterface.logueo.registro.RegistroResponse
 import com.example.appinterface.usuarios.cliente
 import com.example.appinterface.modelos.RegistroRequest
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -55,4 +57,21 @@ interface ApiServicesKotlin {
 
     @GET("productos")
     fun listarProductos(): Call<List<Producto>>
+
+    @Multipart
+    @POST("/productos/crear")
+    fun crearProducto(
+        @Part("producto") productoJson: RequestBody,
+        @Part imagen: MultipartBody.Part
+    ): Call<Producto>
+
+    @PUT("productos/{id}")
+    fun actualizarProducto(
+        @Path("id") id: Int,
+        @Body productos: Producto
+    ): Call<String>
+
+    @DELETE("/productos/{id}")
+    fun eliminarProducto(@Path("id") id: Int): Call<String>
+
 }

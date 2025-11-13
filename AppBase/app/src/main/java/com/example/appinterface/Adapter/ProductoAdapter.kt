@@ -1,4 +1,4 @@
-package com.example.appinterface.producto
+package com.example.appinterface.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.R
+import com.example.appinterface.producto.Producto
 import com.squareup.picasso.Picasso
 
 class ProductoAdapter(private val productos: List<Producto>) :
@@ -14,6 +15,7 @@ class ProductoAdapter(private val productos: List<Producto>) :
 
 
     class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
         val nombre: TextView = view.findViewById(R.id.tvNombre)
         val descripcion: TextView = view.findViewById(R.id.tvDescripcion)
         val precio: TextView = view.findViewById(R.id.tvPrecio)

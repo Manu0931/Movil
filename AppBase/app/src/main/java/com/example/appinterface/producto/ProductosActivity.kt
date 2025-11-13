@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appinterface.Adapter.ProductoAdapter
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
 import retrofit2.Call
@@ -31,11 +31,11 @@ class ProductosActivity : AppCompatActivity() {
         }
 
 
-        cargarProductosDesdeApi()
+        listarProductos()
     }
 
 
-    private fun cargarProductosDesdeApi() {
+    private fun listarProductos() {
         val call = RetrofitInstance.productosApi.listarProductos()
 
 
@@ -45,7 +45,7 @@ class ProductosActivity : AppCompatActivity() {
                     val listaProductos = response.body()!!
                     recyclerView.adapter = ProductoAdapter(listaProductos)
                 } else {
-                    // 👇 Aquí agregamos el Toast con el código de error
+                    //Aquí agregamos el Toast con el código de error
                     Toast.makeText(
                         this@ProductosActivity,
                         "Error al obtener productos: ${response.code()} ${response.message()}",

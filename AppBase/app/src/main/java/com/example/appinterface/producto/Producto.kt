@@ -1,6 +1,7 @@
 package com.example.appinterface.producto
 
 data class Producto(
+    val idProducto: Int? = null,
     val nombre: String,
     val descripcion: String,
     val precio: Double,
