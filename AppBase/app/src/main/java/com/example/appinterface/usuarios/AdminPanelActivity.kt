@@ -71,6 +71,8 @@ class AdminPanelActivity : AppCompatActivity() {
         binding.cardInventario.setOnClickListener {
             val intent = Intent(this, InventarioActivity::class.java)
             startActivity(intent)
+        binding.cardVentas.setOnClickListener {
+            Toast.makeText(this, "Módulo de Ventas (en construcción)", Toast.LENGTH_SHORT).show()
         }
     }
 }
