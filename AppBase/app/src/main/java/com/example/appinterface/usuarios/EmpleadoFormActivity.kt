@@ -54,9 +54,9 @@ class EmpleadoFormActivity : AppCompatActivity() {
         }
 
         RetrofitInstance.empleadosApi.crearEmpleado(empleado)
-            .enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    if (response.isSuccessful) {
+            .enqueue(object : Callback<Empleado> {
+                override fun onResponse(call: Call<Empleado>, data: Response<Empleado>) {
+                    if (data.isSuccessful) {
                         Toast.makeText(
                             this@EmpleadoFormActivity,
                             "Empleado creado correctamente",
@@ -66,13 +66,13 @@ class EmpleadoFormActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(
                             this@EmpleadoFormActivity,
-                            "Error al crear empleado: ${response.code()}",
+                            "Error al crear empleado: ${data.code()}",
                             Toast.LENGTH_LONG
                         ).show()
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<Empleado>, t: Throwable) {
                     Toast.makeText(
                         this@EmpleadoFormActivity,
                         "Fallo de conexión: ${t.localizedMessage}",

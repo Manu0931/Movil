@@ -71,8 +71,8 @@ class EmpleadoAdapter(
                 .setMessage("¿Deseas eliminar a ${empleado.nombre}?")
                 .setPositiveButton("Sí") { dialog, _ ->
                     RetrofitInstance.empleadosApi.eliminarEmpleado(empleado.idEmpleado!!)
-                        .enqueue(object : Callback<String> {
-                            override fun onResponse(call: Call<String>, response: Response<String>) {
+                        .enqueue(object : Callback<Empleado> {
+                            override fun onResponse(call: Call<Empleado>, response: Response<Empleado>) {
                                 if (response.isSuccessful) {
                                     lista.removeAt(pos)  // 👈 usamos pos, no position
                                     notifyItemRemoved(pos)
@@ -83,7 +83,7 @@ class EmpleadoAdapter(
                                 }
                             }
 
-                            override fun onFailure(call: Call<String>, t: Throwable) {
+                            override fun onFailure(call: Call<Empleado>, t: Throwable) {
                                 Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                             }
                         })
