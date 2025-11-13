@@ -75,4 +75,4 @@ class AdminPanelActivity : AppCompatActivity() {
             Toast.makeText(this, "Módulo de Ventas (en construcción)", Toast.LENGTH_SHORT).show()
         }
     }
-}
+}}
