@@ -1,14 +1,16 @@
 package com.example.appinterface.usuarios
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.appinterface.ProductosActivity
+import com.example.appinterface.producto.ProductosActivity
 import com.example.appinterface.logueo.LoginActivity
 import com.example.appinterface.R
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
+import com.example.appinterface.producto.ModuloProductosActivity
 
 class AdminPanelActivity : AppCompatActivity() {
 
@@ -27,7 +29,7 @@ class AdminPanelActivity : AppCompatActivity() {
             val popup = PopupMenu(this, view)
             popup.menuInflater.inflate(R.menu.menu_admin, popup.menu)
 
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 popup.setForceShowIcon(true)
             }
 
@@ -56,12 +58,13 @@ class AdminPanelActivity : AppCompatActivity() {
             popup.show()
         }
 
+
         binding.cardClientes.setOnClickListener {
             startActivity(Intent(this, UsuariosActivity::class.java))
         }
 
         binding.cardProductos.setOnClickListener {
-            startActivity(Intent(this, ProductosActivity::class.java))
+            startActivity(Intent(this, ModuloProductosActivity::class.java))
         }
 
         binding.cardInventario.setOnClickListener {
