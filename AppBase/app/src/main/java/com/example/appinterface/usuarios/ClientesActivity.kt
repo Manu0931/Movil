@@ -26,6 +26,11 @@ class ClientesActivity : AppCompatActivity() {
             finish()
         }
 
+
+
+
+
+
         RetrofitInstance.empleadosApi.obtenerClientes().enqueue(object : Callback<List<cliente>> {
             override fun onResponse(call: Call<List<cliente>>, response: Response<List<cliente>>) {
                 val clientes = response.body()
