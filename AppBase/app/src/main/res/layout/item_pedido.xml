@@ -10,12 +10,12 @@
 
 
     <ImageView
-            android:id="@+id/imgStatusEnvio"
+            android:id="@+id/imgStatusPedido"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:src="@drawable/ic_shipping"
+            android:src="@drawable/ic_pending"
             android:layout_marginEnd="12dp"
-            android:contentDescription="Estado del envío" />
+            android:contentDescription="Estado del pedido" />
 
 
     <LinearLayout
@@ -25,16 +25,25 @@
             android:layout_weight="1">
 
         <TextView
-                android:id="@+id/tvDireccionEnvio"
+                android:id="@+id/tvIdPedido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dirección: Calle 123 #45-67"
+                android:text="Pedido #101"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
         <TextView
-                android:id="@+id/tvFechaEnvio"
+                android:id="@+id/tvIdCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cliente: 25"
+                android:textColor="#555555"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp" />
+
+        <TextView
+                android:id="@+id/tvFechaPedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fecha: 2025-01-01"
@@ -43,23 +52,24 @@
                 android:layout_marginTop="2dp" />
 
         <TextView
-                android:id="@+id/tvMetodoEnvio"
+                android:id="@+id/tvEstadoPedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Método: Terrestre"
-                android:textColor="#555555"
-                android:textSize="14sp"
-                android:layout_marginTop="2dp" />
-
-        <TextView
-                android:id="@+id/tvEstadoEnvio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pendiente"
+                android:text="Estado: Pendiente"
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginTop="4dp" />
+
+        <TextView
+                android:id="@+id/tvTotalPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: $150.000"
+                android:textColor="#2E7D32"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp" />
     </LinearLayout>
 
 </LinearLayout>

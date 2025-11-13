@@ -1,6 +1,7 @@
     package com.example.appinterface.Api
 
     import com.example.appinterface.Ventas.Envio
+    import com.example.appinterface.Ventas.Pedido
     import com.example.appinterface.logueo.LoginRequest
     import com.example.appinterface.usuarios.Empleado
     import com.example.appinterface.logueo.LoginResponse
@@ -33,4 +34,7 @@
 
         @GET("envio")
         fun getEnvio(): Call<List<Envio>>
+
+        @GET("pedido")
+        fun getPedido(): Call<List<Pedido>>
     }

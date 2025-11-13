@@ -13,10 +13,17 @@ class VentasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ventas)
 
         val btnConsultarEnvios = findViewById<Button>(R.id.btnConsultarEnvios)
+        val btnConsultarPedido = findViewById<Button>(R.id.btnConsultarPedidos)
 
 
         btnConsultarEnvios.setOnClickListener {
             val intent = Intent(this, EnviosActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        btnConsultarPedido.setOnClickListener {
+            val intent = Intent(this, PedidoActivity::class.java)
             startActivity(intent)
         }
 

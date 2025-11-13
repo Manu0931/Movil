@@ -24,6 +24,7 @@
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />
 		<activity android:name=".Ventas.VentasActivity" />
 		<activity android:name=".Ventas.EnviosActivity" />
+		<activity android:name=".Ventas.PedidoActivity" />
 
 
 		<activity
