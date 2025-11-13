@@ -56,8 +56,8 @@ class ClientesFormActivity : AppCompatActivity() {
         }
 
         RetrofitInstance.empleadosApi.registrarCliente(request)
-            .enqueue(object : Callback<RegistroResponse> {
-                override fun onResponse(call: Call<RegistroResponse>, response: Response<RegistroResponse>) {
+            .enqueue(object : Callback<cliente> {
+                override fun onResponse(call: Call<cliente>, response: Response<cliente>) {
                     if (response.isSuccessful) {
                         Toast.makeText(
                             this@ClientesFormActivity,
@@ -74,7 +74,7 @@ class ClientesFormActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<RegistroResponse>, t: Throwable) {
+                override fun onFailure(call: Call<cliente>, t: Throwable) {
                     Toast.makeText(
                         this@ClientesFormActivity,
                         "Fallo de conexión: ${t.localizedMessage}",

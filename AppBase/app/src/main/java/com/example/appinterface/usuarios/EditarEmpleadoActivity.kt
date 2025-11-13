@@ -68,8 +68,8 @@ class EditarEmpleadoActivity : AppCompatActivity() {
         )
 
         RetrofitInstance.empleadosApi.actualizarEmpleado(empleadoId, empleadoActualizado)
-            .enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            .enqueue(object : Callback<Empleado> {
+                override fun onResponse(call: Call<Empleado>, response: Response<Empleado>) {
                     if (response.isSuccessful) {
                         Toast.makeText(this@EditarEmpleadoActivity, "Empleado actualizado", Toast.LENGTH_SHORT).show()
                         finish()
@@ -78,7 +78,7 @@ class EditarEmpleadoActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<Empleado>, t: Throwable) {
                     Toast.makeText(this@EditarEmpleadoActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
