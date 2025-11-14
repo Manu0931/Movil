@@ -3,9 +3,12 @@ package com.example.appinterface.Api
 import com.example.appinterface.logueo.LoginRequest
 import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
+import com.example.appinterface.producto.Producto
 import com.example.appinterface.logueo.registro.RegistroResponse
 import com.example.appinterface.usuarios.cliente
 import com.example.appinterface.modelos.RegistroRequest
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 import com.example.appinterface.Ventas.Envio
@@ -55,9 +58,31 @@ interface ApiServicesKotlin {
         @Body request: LoginRequest
     ): Call<LoginResponse>
 
+    @GET("productos")
+    fun listarProductos(): Call<List<Producto>>
+
+    @Multipart
+    @POST("/productos/crear")
+    fun crearProducto(
+        @Part("producto") productoJson: RequestBody,
+        @Part imagen: MultipartBody.Part
+    ): Call<Producto>
+
+    @PUT("productos/{id}")
+    fun actualizarProducto(
+        @Path("id") id: Int,
+        @Body productos: Producto
+    ): Call<String>
+
+    @DELETE("/productos/{id}")
+    fun eliminarProducto(@Path("id") id: Int): Call<String>
+
     @GET("envio")
     fun getEnvio(): Call<List<Envio>>
 
     @GET("pedido")
     fun getPedido(): Call<List<Pedido>>
-    }
+}
+}
+
+

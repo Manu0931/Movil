@@ -59,7 +59,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:tint="#000000"
-                        android:layout_marginEnd="10dp" />
+                        android:layout_marginEnd="10dp"/>
             </RelativeLayout>
 
             <!-- CONTENIDO -->

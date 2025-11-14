@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.R
 import com.example.appinterface.databinding.ActivityPanelClienteBinding
 import com.example.appinterface.logueo.LoginActivity
-import com.example.appinterface.ProductosActivity
 
 class PanelCliente : AppCompatActivity() {
 
@@ -22,7 +21,7 @@ class PanelCliente : AppCompatActivity() {
         binding.tvBienvenida.text = "Bienvenido, $nombreCliente 👋"
 
         binding.btnProductos.setOnClickListener {
-            startActivity(Intent(this, ProductosActivity::class.java))
+            startActivity(Intent(this, ("ProductosActivity")::class.java))
         }
 
         binding.btnCarrito.setOnClickListener {
