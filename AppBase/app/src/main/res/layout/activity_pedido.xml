@@ -2,16 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/rootPedidos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF"
-                tools:context=".usuarios.ClientesActivity">
+                tools:context=".Ventas.PedidoActivity">
 
     <ScrollView
-            android:id="@+id/scrollClientes"
+            android:id="@+id/scrollPedidos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/footerClientes"
+            android:layout_above="@+id/footerPedidos"
             android:fillViewport="true">
 
         <LinearLayout
@@ -28,7 +29,7 @@
                     android:elevation="4dp">
 
                 <ImageView
-                        android:id="@+id/logoKshop"
+                        android:id="@+id/logoKshopPedidos"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@mipmap/logo_kshop"
@@ -36,30 +37,28 @@
                         android:layout_alignParentStart="true" />
 
                 <TextView
-                        android:id="@+id/txtTituloClientes"
+                        android:id="@+id/txtTituloPedidos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Módulo de Clientes"
+                        android:text="Pedidos"
                         android:textColor="#000000"
                         android:textSize="22sp"
                         android:textStyle="bold"
-                        android:layout_toEndOf="@id/logoKshop"
+                        android:layout_toEndOf="@id/logoKshopPedidos"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="8dp" />
+                        android:layout_marginStart="8dp"/>
 
                 <ImageView
-                        android:id="@+id/btnVolverClientes"
+                        android:id="@+id/btnCerrarSesionPedidos"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_back"
-                        android:contentDescription="Volver"
+                        android:src="@drawable/ic_logout"
+                        android:contentDescription="Cerrar sesión"
                         android:padding="6dp"
                         android:clickable="true"
-                        android:focusable="true"
-                        android:tint="#000000"
-                        android:layout_marginEnd="10dp"/>
+                        android:focusable="true" />
             </RelativeLayout>
 
             <!-- CONTENIDO -->
@@ -73,13 +72,13 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Administra la información de los clientes de K-SHOP desde esta sección."
+                        android:text="Consulta, administra y gestiona los pedidos realizados."
                         android:textColor="#555555"
                         android:textAlignment="center"
                         android:textSize="16sp"
-                        android:layout_marginBottom="24dp" />
+                        android:layout_marginBottom="16dp" />
 
-                <!-- CARD CON LISTA DE CLIENTES -->
+                <!-- CARD CON LISTA DE PEDIDOS -->
                 <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -97,7 +96,7 @@
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Lista de Clientes"
+                                android:text="Lista de Pedidos"
                                 android:textColor="#000000"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
@@ -111,30 +110,42 @@
                                 android:layout_marginBottom="8dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerClientes"
+                                android:id="@+id/recyclerPedidos"
                                 android:layout_width="match_parent"
                                 android:layout_height="400dp"
                                 android:scrollbars="vertical"
                                 android:padding="8dp" />
+
+                        <!-- progress / mensaje -->
+                        <ProgressBar
+                                android:id="@+id/progressPedidos"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone"
+                                style="?android:attr/progressBarStyleLarge"
+                                android:layout_marginTop="12dp" />
+
+                        <TextView
+                                android:id="@+id/txtErrorPedidos"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="#D32F2F"
+                                android:textAlignment="center"
+                                android:visibility="gone"
+                                android:layout_marginTop="12dp" />
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- CONSEJO FINAL -->
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="💡 Consejo: Mantén actualizada la información de los clientes para un mejor control."
-                        android:textColor="#555555"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:layout_marginTop="24dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
     <!-- FOOTER -->
     <LinearLayout
-            android:id="@+id/footerClientes"
+            android:id="@+id/footerPedidos"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_alignParentBottom="true"
@@ -145,7 +156,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="© 2025 K-SHOP - Módulo Clientes"
+                android:text="© 2025 K-SHOP - Módulo Pedidos"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
     </LinearLayout>

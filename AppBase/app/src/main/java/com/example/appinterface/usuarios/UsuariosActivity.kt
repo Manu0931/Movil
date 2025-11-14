@@ -6,8 +6,8 @@ import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.appinterface.ProductosActivity
 import com.example.appinterface.R
+import com.example.appinterface.producto.ProductosActivity
 import com.example.appinterface.databinding.ActivityUsuariosBinding
 import com.example.appinterface.logueo.LoginActivity
 

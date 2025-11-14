@@ -25,9 +25,20 @@
 		<activity android:name=".usuarios.EmpleadoFormActivity" android:exported="false" />
 		<activity android:name=".usuarios.ClientesFormActivity" android:exported="false" />
 		<activity android:name=".usuarios.ClientesActivity" android:exported="false" />
-		<activity android:name=".ProductosActivity" android:exported="false" />
+		<activity android:name=".producto.ProductosActivity" android:exported="false" />
+		<activity android:name=".producto.ModuloProductosActivity" android:exported="false" />
+		<activity android:name=".producto.EditarProductoActivity" android:exported="false"  />
 		<activity android:name=".ServiciosActivity" android:exported="false" />
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />
+		<activity android:name=".usuarios.InventarioActivity" />
+		<activity android:name=".usuarios.CuponesActivity" />
+		<activity android:name=".Cupones.ListaCuponesActivity" />
+
+
+		<activity android:name=".Ventas.VentasActivity" />
+		<activity android:name=".Ventas.EnviosActivity" />
+		<activity android:name=".Ventas.PedidoActivity" />
+
 
 		<activity
 				android:name=".MainActivity"

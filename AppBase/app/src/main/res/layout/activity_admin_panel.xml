@@ -185,9 +185,14 @@
                             android:layout_margin="6dp"
                             android:background="@drawable/bg_card"
                             android:clickable="true"
-                            android:focusable="true">
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:descendantFocusability="blocksDescendants"
+                            android:focusableInTouchMode="true"
+                            android:elevation="4dp">
 
-                        <ImageView
+
+                    <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="100dp"
                                 android:scaleType="centerCrop"
