@@ -1,5 +1,6 @@
 package com.example.appinterface.Api
 
+import com.example.appinterface.Cupones.Cupon
 import com.example.appinterface.logueo.LoginRequest
 import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
@@ -34,6 +35,7 @@ interface ApiServicesKotlin {
         @Path("id") id: Int
     ): Call<Empleado>
 
+
     @GET("clientes")
     fun obtenerClientes(): Call<List<cliente>>
 
@@ -57,6 +59,9 @@ interface ApiServicesKotlin {
     fun login(
         @Body request: LoginRequest
     ): Call<LoginResponse>
+
+    @GET("cupon")
+    fun getCupones(): Call<List<Cupon>>
 
     @GET("productos")
     fun listarProductos(): Call<List<Producto>>
