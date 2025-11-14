@@ -1,5 +1,6 @@
 # Gradle
 .gradle/
+AppBase/.gradle/
 build/
 
 # Local configuration
