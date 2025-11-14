@@ -46,7 +46,7 @@ interface ApiServicesKotlin {
     @PUT("clientes/{id}")
     fun actualizarClientes(
         @Path("id") id: Int,
-        @Body empleado: Empleado
+        @Body cliente: cliente
     ): Call<cliente>
 
     @DELETE("clientes/{id}")

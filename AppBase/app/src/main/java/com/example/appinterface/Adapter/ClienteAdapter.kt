@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.usuarios.cliente
 import com.example.appinterface.R
+import com.example.appinterface.usuarios.EditarClientesActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,10 +52,19 @@ class ClienteAdapter(
 
         // Editar cliente
         holder.btnEditar.setOnClickListener {
-            val intent = Intent(context, ("ClienteEditarActivity")::class.java)
+            val intent = Intent(context, EditarClientesActivity::class.java)
+
             intent.putExtra("idCliente", clienteActual.idCliente)
+            intent.putExtra("nombre", clienteActual.nombre)
+            intent.putExtra("correo", clienteActual.correo)
+            intent.putExtra("contrasena", clienteActual.contrasena)
+            intent.putExtra("estado", clienteActual.estado)
+            intent.putExtra("documento", clienteActual.documento)
+            intent.putExtra("telefono", clienteActual.telefono)
+
             context.startActivity(intent)
         }
+
 
         // Eliminar cliente
         holder.btnEliminar.setOnClickListener {
