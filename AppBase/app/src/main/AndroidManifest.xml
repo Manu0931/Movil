@@ -19,6 +19,7 @@
 		<activity android:name=".usuarios.UsuariosActivity" />
 		<activity android:name=".usuarios.PanelCliente" />
 		<activity android:name=".usuarios.EditarEmpleadoActivity" />
+		<activity android:name=".usuarios.EditarClientesActivity" />
 		<activity android:name=".usuarios.AdminPanelActivity"/>
 		<activity android:name=".logueo.LoginActivity" android:exported="false" />
 		<activity android:name=".usuarios.EmpleadosActivity" android:exported="false" />
