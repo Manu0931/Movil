@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appinterface.Ventas.VentasActivity
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
 import com.example.appinterface.usuarios.UsuariosActivity
 
@@ -34,7 +35,7 @@ class AdminPanelActivity : AppCompatActivity() {
         }
 
         binding.cardVentas.setOnClickListener {
-            Toast.makeText(this, "Módulo de Ventas (en construcción)", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, VentasActivity::class.java))
         }
     }
 }
