@@ -8,73 +8,75 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
+import com.example.appinterface.modelos.RegistroRequest
+import com.example.appinterface.logueo.registro.RegistroResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
 
-class EmpleadoFormActivity : AppCompatActivity() {
+class ClientesFormActivity : AppCompatActivity() {
 
     private lateinit var nombre: EditText
-    private lateinit var cargo: EditText
     private lateinit var correo: EditText
     private lateinit var contrasena: EditText
+    private lateinit var documento: EditText
+    private lateinit var telefono: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_empleado_form)
+        setContentView(R.layout.activity_cliente_form)
 
         nombre = findViewById(R.id.nombre)
-        cargo = findViewById(R.id.cargo)
         correo = findViewById(R.id.correo)
         contrasena = findViewById(R.id.contrasena)
+        documento = findViewById(R.id.documento)
+        telefono = findViewById(R.id.telefono)
+
         val btnVolver = findViewById<ImageButton>(R.id.btnVolver)
         btnVolver.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
     }
 
-    fun crearEmpleado(v: View) {
-        val fechaActual = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-
-        val empleado = Empleado(
+    fun crearCliente(v: View) {
+        val request = RegistroRequest(
             nombre = nombre.text.toString().trim(),
-            cargo = cargo.text.toString().trim(),
             correo = correo.text.toString().trim(),
             contrasena = contrasena.text.toString().trim(),
-            fechaContratacion = fechaActual,
-            estado = "Activo"
+            documento = documento.text.toString().trim(),
+            telefono = telefono.text.toString().trim()
         )
 
-        if (empleado.nombre.isEmpty() || empleado.cargo.isEmpty() ||
-            empleado.correo.isEmpty() || empleado.contrasena.isEmpty()) {
+        if (request.nombre.isEmpty() || request.correo.isEmpty() ||
+            request.contrasena.isEmpty() || request.documento.isEmpty() ||
+            request.telefono.isEmpty()
+        ) {
             Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
             return
         }
 
-        RetrofitInstance.empleadosApi.crearEmpleado(empleado)
-            .enqueue(object : Callback<Empleado> {
-                override fun onResponse(call: Call<Empleado>, data: Response<Empleado>) {
-                    if (data.isSuccessful) {
+        RetrofitInstance.empleadosApi.registrarCliente(request)
+            .enqueue(object : Callback<cliente> {
+                override fun onResponse(call: Call<cliente>, response: Response<cliente>) {
+                    if (response.isSuccessful) {
                         Toast.makeText(
-                            this@EmpleadoFormActivity,
-                            "Empleado creado correctamente",
+                            this@ClientesFormActivity,
+                            "Cliente creado correctamente",
                             Toast.LENGTH_LONG
                         ).show()
                         limpiarCampos()
                     } else {
                         Toast.makeText(
-                            this@EmpleadoFormActivity,
-                            "Error al crear empleado: ${data.code()}",
+                            this@ClientesFormActivity,
+                            "Error al crear cliente: ${response.code()}",
                             Toast.LENGTH_LONG
                         ).show()
                     }
                 }
 
-                override fun onFailure(call: Call<Empleado>, t: Throwable) {
+                override fun onFailure(call: Call<cliente>, t: Throwable) {
                     Toast.makeText(
-                        this@EmpleadoFormActivity,
+                        this@ClientesFormActivity,
                         "Fallo de conexión: ${t.localizedMessage}",
                         Toast.LENGTH_LONG
                     ).show()
@@ -84,9 +86,9 @@ class EmpleadoFormActivity : AppCompatActivity() {
 
     private fun limpiarCampos() {
         nombre.text.clear()
-        cargo.text.clear()
         correo.text.clear()
         contrasena.text.clear()
+        documento.text.clear()
+        telefono.text.clear()
     }
 }
-

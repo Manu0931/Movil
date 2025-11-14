@@ -6,7 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Ventas.VentasActivity
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
-import com.example.appinterface.usuarios.UsuariosActivity
+import com.example.appinterface.producto.ProductosActivity
+import com.example.appinterface.usuarios.EmpleadosActivity
 
 class AdminPanelActivity : AppCompatActivity() {
 
@@ -23,14 +24,15 @@ class AdminPanelActivity : AppCompatActivity() {
 
         // Listeners para cada card
         binding.cardClientes.setOnClickListener {
-            startActivity(Intent(this, UsuariosActivity::class.java))
+            startActivity(Intent(this, EmpleadosActivity::class.java))
         }
 
         binding.cardProductos.setOnClickListener {
-            startActivity(Intent(this, ProductosActivity::class.java))
-        }
+            val intent = Intent(this, ProductosActivity::class.java)
+            startActivity(intent)
+            }
 
-        binding.cardInventario.setOnClickListener {
+            binding.cardInventario.setOnClickListener {
             Toast.makeText(this, "Módulo de Inventario (en construcción)", Toast.LENGTH_SHORT).show()
         }
 
