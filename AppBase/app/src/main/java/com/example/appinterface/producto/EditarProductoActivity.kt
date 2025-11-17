@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.provider.OpenableColumns
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -25,70 +24,66 @@ class EditarProductoActivity : AppCompatActivity() {
     private lateinit var etDescripcion: EditText
     private lateinit var etPrecio: EditText
     private lateinit var etStock: EditText
-    private lateinit var etIdProveedor: EditText
+    private lateinit var etProveedor: EditText
     private lateinit var etEstado: EditText
-    private lateinit var imgProducto: ImageView
-    private lateinit var btnSeleccionarImagen: Button
-    private lateinit var btnActualizar: Button
-    private lateinit var btnVolver: ImageView
+    private lateinit var previewImagen: ImageView
+    private lateinit var btnSeleccionar: Button
+    private lateinit var btnActualizarProducto: Button
+    private lateinit var btnVolverEditar: ImageView
 
     private var imagenUri: Uri? = null
-    private var productoId: Int = 0
+    private var idProducto: Int = 0
 
     companion object {
-        private const val REQUEST_IMAGE_PICK = 100
+        private const val REQUEST_IMAGE_PICK = 200
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_producto)
 
-        // ENLAZAR XML
-        imgProducto = findViewById(R.id.imgProducto)
-        btnSeleccionarImagen = findViewById(R.id.btnSeleccionarImagen)
-        btnActualizar = findViewById(R.id.btnActualizarProducto)
-        btnVolver = findViewById(R.id.btnVolverEditar)
-
+        // Binding
         etNombre = findViewById(R.id.etNombre)
         etDescripcion = findViewById(R.id.etDescripcion)
         etPrecio = findViewById(R.id.etPrecio)
         etStock = findViewById(R.id.etStock)
-        etIdProveedor = findViewById(R.id.etIdProveedor)
+        etProveedor = findViewById(R.id.etIdProveedor)
         etEstado = findViewById(R.id.etEstado)
+        previewImagen = findViewById(R.id.imgProducto)
+        btnSeleccionar = findViewById(R.id.btnSeleccionarImagen)
+        btnActualizarProducto = findViewById(R.id.btnActualizarProducto)
+        btnVolverEditar = findViewById(R.id.btnVolverEditar)
 
-        // OBTENER DATOS DEL INTENT
-        productoId = intent.getIntExtra("idProducto", 0)
-        etNombre.setText(intent.getStringExtra("nombre"))
-        etDescripcion.setText(intent.getStringExtra("descripcion"))
-        etPrecio.setText(intent.getDoubleExtra("precio", 0.0).toString())
-        etStock.setText(intent.getIntExtra("stock", 0).toString())
-        etIdProveedor.setText(intent.getIntExtra("idProveedor", 0).toString())
-        etEstado.setText(intent.getStringExtra("estado"))
+        // Regresar
+        btnVolverEditar.setOnClickListener { finish() }
 
-        val imagenUrl = intent.getStringExtra("imagen")
-        if (!imagenUrl.isNullOrEmpty()) {
-            Glide.with(this)
-                .load(imagenUrl)
-                .into(imgProducto)
+        // Recibir datos enviados desde ProductosActivity
+        val producto = intent.getSerializableExtra("producto") as? Producto
+
+        if (producto != null) {
+            idProducto = producto.idProducto ?: 0
+            etNombre.setText(producto.nombre)
+            etDescripcion.setText(producto.descripcion)
+            etPrecio.setText(producto.precio.toString())
+            etStock.setText(producto.stock.toString())
+            etProveedor.setText(producto.idProveedor.toString())
+            etEstado.setText(producto.estado)
+
+            // Cargar imagen actual
+            com.squareup.picasso.Picasso.get().load(producto.imagen).into(previewImagen)
         }
 
-        // EVENTOS
-        btnVolver.setOnClickListener { finish() }
-
-        btnSeleccionarImagen.setOnClickListener {
-            seleccionarImagen()
+        // Seleccionar imagen
+        btnSeleccionar.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, REQUEST_IMAGE_PICK)
         }
 
-        btnActualizar.setOnClickListener {
+        // Actualizar
+        btnActualizarProducto.setOnClickListener {
             actualizarProducto()
         }
-    }
-
-    // ABRIR GALERÍA
-    private fun seleccionarImagen() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, REQUEST_IMAGE_PICK)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -96,42 +91,39 @@ class EditarProductoActivity : AppCompatActivity() {
 
         if (requestCode == REQUEST_IMAGE_PICK && resultCode == Activity.RESULT_OK) {
             imagenUri = data?.data
-            imgProducto.setImageURI(imagenUri)
+            previewImagen.setImageURI(imagenUri)
         }
     }
 
-    // CONVERTIR URI → FILE (SIN PATHUTIL)
+    // Convertir URI → File
     private fun uriToFile(uri: Uri): File {
-        val returnCursor = contentResolver.query(uri, null, null, null, null)
-        val nameIndex = returnCursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME) ?: -1
-        returnCursor?.moveToFirst()
-        val fileName = if (nameIndex != -1) returnCursor?.getString(nameIndex) else "imagen_temp.jpg"
-        returnCursor?.close()
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        val nameIndex = cursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME) ?: -1
+        cursor?.moveToFirst()
+        val fileName =
+            if (nameIndex != -1) cursor?.getString(nameIndex) else "temp_image.jpg"
+        cursor?.close()
 
-        val inputStream = contentResolver.openInputStream(uri)
+        val input = contentResolver.openInputStream(uri)
         val file = File(cacheDir, fileName!!)
-        val outputStream = FileOutputStream(file)
-        inputStream?.copyTo(outputStream)
-        inputStream?.close()
-        outputStream.close()
+        val output = FileOutputStream(file)
+
+        input?.copyTo(output)
+        input?.close()
+        output.close()
 
         return file
     }
 
     private fun actualizarProducto() {
-        val nombre = etNombre.text.toString()
-        val descripcion = etDescripcion.text.toString()
-        val precio = etPrecio.text.toString()
-        val stock = etStock.text.toString()
-        val proveedor = etIdProveedor.text.toString()
-        val estado = etEstado.text.toString()
 
-        val bodyNombre = RequestBody.create("text/plain".toMediaTypeOrNull(), nombre)
-        val bodyDescripcion = RequestBody.create("text/plain".toMediaTypeOrNull(), descripcion)
-        val bodyPrecio = RequestBody.create("text/plain".toMediaTypeOrNull(), precio)
-        val bodyStock = RequestBody.create("text/plain".toMediaTypeOrNull(), stock)
-        val bodyProveedor = RequestBody.create("text/plain".toMediaTypeOrNull(), proveedor)
-        val bodyEstado = RequestBody.create("text/plain".toMediaTypeOrNull(), estado)
+        // RequestBody
+        val nombreBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etNombre.text.toString())
+        val descripcionBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etDescripcion.text.toString())
+        val precioBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etPrecio.text.toString())
+        val stockBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etStock.text.toString())
+        val proveedorBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etProveedor.text.toString())
+        val estadoBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etEstado.text.toString())
 
         var imagenBody: MultipartBody.Part? = null
 
@@ -142,21 +134,29 @@ class EditarProductoActivity : AppCompatActivity() {
         }
 
         RetrofitInstance.productosApi.actualizarProducto(
-            productoId,
-            bodyNombre,
-            bodyDescripcion,
-            bodyPrecio,
-            bodyStock,
-            bodyProveedor,
-            bodyEstado,
+            idProducto,
+            nombreBody,
+            descripcionBody,
+            precioBody,
+            stockBody,
+            proveedorBody,
+            estadoBody,
             imagenBody
         ).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@EditarProductoActivity, "Producto actualizado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@EditarProductoActivity,
+                        "Producto actualizado correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                 } else {
-                    Toast.makeText(this@EditarProductoActivity, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@EditarProductoActivity,
+                        "Error al actualizar (${response.code()})",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
@@ -166,4 +166,6 @@ class EditarProductoActivity : AppCompatActivity() {
         })
     }
 }
+
+
 

@@ -67,7 +67,7 @@ interface ApiServicesKotlin {
         @Part("stock") stock: RequestBody,
         @Part("idProveedor") proveedor: RequestBody,
         @Part("estado") estado: RequestBody,
-        @Part imagen: MultipartBody.Part?   // ⚠ Debe ser MultipartBody.Part
+        @Part imagen: MultipartBody.Part?
     ): Call<String>
 
 
@@ -85,7 +85,7 @@ interface ApiServicesKotlin {
     ): Call<String>
 
 
-    @DELETE("/productos/{id}")
+    @DELETE("/productos/eliminar/{id}")
     fun eliminarProducto(@Path("id") id: Int): Call<String>
 
 }

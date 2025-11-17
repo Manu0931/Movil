@@ -34,7 +34,7 @@ class EditarEmpleadoActivity : AppCompatActivity() {
         etContrasena = findViewById(R.id.etContrasena)
         etEstado = findViewById(R.id.etEstado)
         btnActualizar = findViewById(R.id.btnActualizarEmpleado)
-
+        btnVolverEditar = findViewById(R.id.btnVolverEditar)
         empleadoId = intent.getIntExtra("idEmpleado", 0)
         etNombre.setText(intent.getStringExtra("nombre"))
         etCargo.setText(intent.getStringExtra("cargo"))
