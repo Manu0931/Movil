@@ -29,7 +29,7 @@ class ModuloProductosActivity : AppCompatActivity() {
 
         // Botón para agregar nuevo producto
         binding.btnAgregarProductos.setOnClickListener {
-            val intent = Intent(this, ProductosActivity::class.java)
+            val intent = Intent(this, NuevoProductoActivity::class.java)
             startActivity(intent)
         }
     }

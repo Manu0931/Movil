@@ -59,17 +59,31 @@ interface ApiServicesKotlin {
     fun listarProductos(): Call<List<Producto>>
 
     @Multipart
-    @POST("/productos/crear")
-    fun crearProducto(
-        @Part("producto") productoJson: RequestBody,
-        @Part imagen: MultipartBody.Part
-    ): Call<Producto>
+    @POST("productos/insertar")
+    fun insertarProducto(
+        @Part("nombre") nombre: RequestBody,
+        @Part("descripcion") descripcion: RequestBody,
+        @Part("precio") precio: RequestBody,
+        @Part("stock") stock: RequestBody,
+        @Part("idProveedor") proveedor: RequestBody,
+        @Part("estado") estado: RequestBody,
+        @Part imagen: MultipartBody.Part?   // ⚠ Debe ser MultipartBody.Part
+    ): Call<String>
 
-    @PUT("productos/{id}")
+
+    @Multipart
+    @PUT("productos/actualizar/{id}")
     fun actualizarProducto(
         @Path("id") id: Int,
-        @Body productos: Producto
+        @Part("nombre") nombre: RequestBody,
+        @Part("descripcion") descripcion: RequestBody,
+        @Part("precio") precio: RequestBody,
+        @Part("stock") stock: RequestBody,
+        @Part("idProveedor") proveedor: RequestBody,
+        @Part("estado") estado: RequestBody,
+        @Part imagen: MultipartBody.Part?
     ): Call<String>
+
 
     @DELETE("/productos/{id}")
     fun eliminarProducto(@Path("id") id: Int): Call<String>

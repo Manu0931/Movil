@@ -28,6 +28,7 @@
 		<activity android:name=".producto.ProductosActivity" android:exported="false" />
 		<activity android:name=".producto.ModuloProductosActivity" android:exported="false" />
 		<activity android:name=".producto.EditarProductoActivity" android:exported="false"  />
+		<activity android:name=".producto.NuevoProductoActivity" android:exported="false"  />
 		<activity android:name=".ServiciosActivity" android:exported="false" />
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />
 
