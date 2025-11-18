@@ -110,10 +110,10 @@
                                 android:layout_margin="4dp"/>
 
                         <Button
-                                android:id="@+id/btnRegistrarPedido"
+                                android:id="@+id/btnAgregarPedido"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Registrar"
+                                android:text="Agregar"
                                 android:textAllCaps="false"
                                 android:layout_margin="4dp"/>
                     </LinearLayout>
@@ -153,10 +153,10 @@
                                 android:layout_margin="4dp"/>
 
                         <Button
-                                android:id="@+id/btnRegistrarEnvio"
+                                android:id="@+id/btnAgregarEnvio"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Registrar"
+                                android:text="Agregar"
                                 android:textAllCaps="false"
                                 android:layout_margin="4dp"/>
                     </LinearLayout>

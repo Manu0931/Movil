@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:padding="20dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!-- BOTÓN VOLVER -->
+        <ImageButton
+                android:id="@+id/btnVolver"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:contentDescription="Volver" />
+
+        <!-- TITULO -->
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar Envío"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
+
+        <!-- ID PEDIDO -->
+        <EditText
+                android:id="@+id/idPedidoEnvio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID del Pedido"
+                android:inputType="number"
+                android:layout_marginTop="20dp" />
+
+        <!-- DIRECCIÓN ENVÍO -->
+        <EditText
+                android:id="@+id/direccionEnvio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Dirección de envío"
+                android:inputType="text"
+                android:layout_marginTop="15dp" />
+
+        <!-- FECHA ENVÍO (AUTOGENERADA) -->
+        <EditText
+                android:id="@+id/fechaEnvio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de envío"
+                android:enabled="true"
+                android:inputType="date"
+                android:layout_marginTop="15dp" />
+
+        <!-- MÉTODO ENVÍO -->
+        <EditText
+                android:id="@+id/metodoEnvio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Método de envío"
+                android:inputType="text"
+                android:layout_marginTop="15dp" />
+
+        <!-- ESTADO ENVÍO -->
+        <EditText
+                android:id="@+id/estadoEnvio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Estado del envío"
+                android:inputType="text"
+                android:layout_marginTop="15dp" />
+
+        <!-- BOTÓN CREAR ENVÍO -->
+        <Button
+                android:id="@+id/btnCrearEnvio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:onClick="crearEnvio"
+                android:text="Agregar Envio"/>
+
+    </LinearLayout>
+
+</ScrollView>

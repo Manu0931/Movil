@@ -2,18 +2,11 @@
 .gradle/
 AppBase/.gradle/
 build/
-
-# Local configuration
-local.properties
-
-# IDEA
+AppBase/build.gradle.kts/
+AppBase/local.properties/
+AppBase/gradle.properties/
+AppBase/settings.gradle.kts/
 .idea/
-*.iml
-
-# Logs
-*.log
-
-# Otros
 captures/
 .externalNativeBuild/
 .cxx/

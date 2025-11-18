@@ -34,6 +34,9 @@
 		<activity android:name=".usuarios.InventarioActivity" />
 		<activity android:name=".usuarios.CuponesActivity" />
 		<activity android:name=".Cupones.ListaCuponesActivity" />
+		<activity android:name=".Ventas.EnvioFormActivity" />
+		<activity android:name=".Ventas.PedidoFormActivity" />
+
 
 
 		<activity android:name=".Ventas.VentasActivity" />

@@ -14,6 +14,9 @@ class VentasActivity : AppCompatActivity() {
 
         val btnConsultarEnvios = findViewById<Button>(R.id.btnConsultarEnvios)
         val btnConsultarPedido = findViewById<Button>(R.id.btnConsultarPedidos)
+        val btnAgregarEnvio = findViewById<Button>(R.id.btnAgregarEnvio)
+        val btnAgregarPedido = findViewById<Button>(R.id.btnAgregarPedido)
+
 
 
         btnConsultarEnvios.setOnClickListener {
@@ -25,6 +28,14 @@ class VentasActivity : AppCompatActivity() {
         btnConsultarPedido.setOnClickListener {
             val intent = Intent(this, PedidoActivity::class.java)
             startActivity(intent)
+        }
+
+        btnAgregarEnvio.setOnClickListener {
+            startActivity(Intent(this, EnvioFormActivity::class.java))
+        }
+
+        btnAgregarPedido.setOnClickListener {
+            startActivity(Intent(this, PedidoFormActivity::class.java))
         }
 
     }
