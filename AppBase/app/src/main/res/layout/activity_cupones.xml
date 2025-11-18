@@ -14,7 +14,6 @@
             android:elevation="4dp">
 
         <!-- BOTÓN VOLVER -->
-
         <ImageView
                 android:id="@+id/btnVolver"
                 android:layout_width="42dp"
@@ -22,13 +21,17 @@
                 android:background="@drawable/btn_back_bg"
                 android:layout_alignParentStart="true"
                 android:padding="6dp"
-                android:src="@drawable/ic_arrow_back" android:layout_marginStart="348dp"/>
+                android:src="@drawable/ic_arrow_back"
+                android:layout_marginStart="348dp"/>
+
         <ImageView
                 android:id="@+id/logoKshop"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:contentDescription="Logo KSHOP"
-                android:layout_alignParentStart="true" android:layout_marginStart="2dp"/>
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="2dp"/>
+
         <TextView
                 android:id="@+id/txtTitulo"
                 android:layout_width="wrap_content"
@@ -49,12 +52,12 @@
                 android:contentDescription="Usuario"
                 android:padding="6dp"
                 android:clickable="true"
-                android:focusable="true" android:layout_marginEnd="61dp"/>
-
+                android:focusable="true"
+                android:layout_marginEnd="61dp"/>
 
     </RelativeLayout>
 
-    <!-- CONTENIDO  -->
+    <!-- CONTENIDO -->
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -76,6 +79,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp" />
 
+            <!-- BOTÓN MOSTRAR -->
             <Button
                     android:id="@+id/btnMostrar"
                     android:layout_width="200dp"
@@ -94,21 +98,23 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center_horizontal" />
 
-            <TextView
-                    android:id="@+id/txtCupones"
-                    android:layout_width="match_parent"
+
+            <Button
+                    android:id="@+id/btnActualizar"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:text="Actualizar Cupón"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#7B42F6"
                     android:padding="10dp"
-                    android:textColor="#333"
-                    android:textSize="16sp"
-                    android:background="#F5F5F5"
-                    android:elevation="2dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Presiona el botón para cargar los cupones" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="15dp" />
+
         </LinearLayout>
     </ScrollView>
 
-    <!-- FOOTER  -->
+    <!-- FOOTER -->
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"

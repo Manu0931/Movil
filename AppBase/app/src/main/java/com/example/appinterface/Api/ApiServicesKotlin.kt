@@ -5,7 +5,6 @@ import com.example.appinterface.logueo.LoginRequest
 import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
 import com.example.appinterface.producto.Producto
-import com.example.appinterface.logueo.registro.RegistroResponse
 import com.example.appinterface.usuarios.cliente
 import com.example.appinterface.modelos.RegistroRequest
 import okhttp3.MultipartBody
@@ -63,6 +62,14 @@ interface ApiServicesKotlin {
     @GET("cupon")
     fun getCupones(): Call<List<Cupon>>
 
+    @PUT("cupon/{id}")
+    fun actualizarCupon(idCupon: Int, cuponActualizado: Cupon): Call<Cupon>
+
+    @DELETE("cupon/{id}")
+    fun eliminarCupon(
+        @Path("id") id: Int,
+    ): Call<Cupon>
+
     @GET("productos")
     fun listarProductos(): Call<List<Producto>>
 
@@ -107,6 +114,7 @@ interface ApiServicesKotlin {
 
     @POST("pedido")
     fun crearPedido(@Body pedido: Pedido): Call<Pedido>
+
 }
 
 
