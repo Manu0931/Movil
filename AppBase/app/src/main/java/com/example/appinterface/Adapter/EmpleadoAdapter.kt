@@ -74,7 +74,7 @@ class EmpleadoAdapter(
                         .enqueue(object : Callback<Empleado> {
                             override fun onResponse(call: Call<Empleado>, response: Response<Empleado>) {
                                 if (response.isSuccessful) {
-                                    lista.removeAt(pos)  // 👈 usamos pos, no position
+                                    lista.removeAt(pos)
                                     notifyItemRemoved(pos)
                                     notifyItemRangeChanged(pos, lista.size)
                                     Toast.makeText(context, "Empleado eliminado", Toast.LENGTH_SHORT).show()
