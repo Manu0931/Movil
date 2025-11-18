@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+
+    <!-- Scroll principal -->
+    <ScrollView
+            android:id="@+id/scrollInventario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/footerInventario"
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <!-- ENCABEZADO -->
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:padding="12dp"
+                    android:elevation="4dp">
+
+                <ImageView
+                        android:id="@+id/logoKshop"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@mipmap/logo_kshop"
+                        android:contentDescription="Logo KSHOP"
+                        android:layout_alignParentStart="true" />
+
+                <TextView
+                        android:id="@+id/txtTituloInventario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cupones"
+                        android:textColor="#000000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_toEndOf="@id/logoKshop"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="8dp" />
+            </RelativeLayout>
+
+            <!-- CONTENIDO -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:gravity="center">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Desde aquí podrás gestionar los cupones del sistema KSHOP."
+                        android:textColor="#555555"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="24dp" />
+
+                <!-- CARD CUPONES -->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_card"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                    <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="8dp" />
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Gestión de Cupones"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:gravity="center"
+                            android:layout_marginBottom="8dp" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                        <Button
+                                android:id="@+id/btnIrCupones"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Ir a Cupones"
+                                android:layout_marginBottom="16dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FOOTER -->
+    <LinearLayout
+            android:id="@+id/footerInventario"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="#000000"
+            android:gravity="center">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="© 2025 K-SHOP - Módulo Inventario"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+    </LinearLayout>
+</RelativeLayout>

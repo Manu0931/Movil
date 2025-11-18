@@ -1,0 +1,12 @@
+# Gradle
+.gradle/
+AppBase/.gradle/
+build/
+AppBase/build.gradle.kts/
+AppBase/local.properties/
+AppBase/gradle.properties/
+AppBase/settings.gradle.kts/
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
