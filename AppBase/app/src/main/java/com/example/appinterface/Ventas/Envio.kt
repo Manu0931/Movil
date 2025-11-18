@@ -1,7 +1,7 @@
 package com.example.appinterface.Ventas
 
 data class Envio(
-    val ID_Envio: Int,
+    val ID_Envio: Int?=null,
     val ID_Pedido: Int,
     val direccionEnvio: String,
     val fechaEnvio: String,

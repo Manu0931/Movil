@@ -85,8 +85,14 @@ interface ApiServicesKotlin {
     @GET("envio")
     fun getEnvio(): Call<List<Envio>>
 
+    @POST("envio")
+    fun crearEnvio(@Body envio: Envio): Call<Envio>
+
     @GET("pedido")
     fun getPedido(): Call<List<Pedido>>
+
+    @POST("pedido")
+    fun crearPedido(@Body pedido: Pedido): Call<Pedido>
 }
 
 
