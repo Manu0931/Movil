@@ -91,7 +91,7 @@ class EnvioFormActivity : AppCompatActivity() {
                     Log.e("ERROR_ENVIO", "Fallo", t)
                     Toast.makeText(
                         this@EnvioFormActivity,
-                        "Se cayó la vuelta: ${t.localizedMessage}",
+                        "Error: ${t.localizedMessage}",
                         Toast.LENGTH_LONG
                     ).show()
                 }
