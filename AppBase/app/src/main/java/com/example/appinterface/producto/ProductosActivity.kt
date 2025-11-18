@@ -80,8 +80,8 @@ class ProductosActivity : AppCompatActivity() {
 
 
         RetrofitInstance.productosApi.eliminarProducto(producto.idProducto ?: 0)
-            .enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+            .enqueue(object : Callback<Producto> {
+                override fun onResponse(call: Call<Producto>, response: Response<Producto>) {
                     if (response.isSuccessful) {
                         Toast.makeText(this@ProductosActivity, "Producto eliminado", Toast.LENGTH_SHORT).show()
                         listarProductos() // refresca la lista
@@ -90,7 +90,7 @@ class ProductosActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<Producto>, t: Throwable) {
                     Toast.makeText(this@ProductosActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })

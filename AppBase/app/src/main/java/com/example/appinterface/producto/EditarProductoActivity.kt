@@ -11,7 +11,8 @@ import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -116,34 +117,45 @@ class EditarProductoActivity : AppCompatActivity() {
     }
 
     private fun actualizarProducto() {
-
-        // RequestBody
-        val nombreBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etNombre.text.toString())
-        val descripcionBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etDescripcion.text.toString())
-        val precioBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etPrecio.text.toString())
-        val stockBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etStock.text.toString())
-        val proveedorBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etProveedor.text.toString())
-        val estadoBody = RequestBody.create("text/plain".toMediaTypeOrNull(), etEstado.text.toString())
-
-        var imagenBody: MultipartBody.Part? = null
-
-        if (imagenUri != null) {
-            val file = uriToFile(imagenUri!!)
-            val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-            imagenBody = MultipartBody.Part.createFormData("imagen", file.name, requestFile)
+        // Determinar estado
+        val estadoTexto = if (etEstado.text.toString().trim().equals("Activo", ignoreCase = true)) {
+            "Activo"
+        } else {
+            "Inactivo"
         }
 
+        // Crear objeto Producto con datos actuales
+        val productoActualizado = Producto(
+            idProducto = idProducto,
+            nombre = etNombre.text.toString(),
+            descripcion = etDescripcion.text.toString(),
+            precio = etPrecio.text.toString().toDoubleOrNull() ?: 0.0,
+            stock = etStock.text.toString().toIntOrNull() ?: 0,
+            idProveedor = etProveedor.text.toString().toIntOrNull() ?: 0,
+            estado = estadoTexto,
+            imagen = null // La imagen la manejaremos aparte si se selection
+        )
+
+        // Preparar Multipart
+        var imagenPart: MultipartBody.Part? = null
+        if (imagenUri != null) {
+            val file = uriToFile(imagenUri!!)
+            val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+            imagenPart = MultipartBody.Part.createFormData("imagen", file.name, requestFile)
+        }
+
+        // Llamada a Retrofit
         RetrofitInstance.productosApi.actualizarProducto(
             idProducto,
-            nombreBody,
-            descripcionBody,
-            precioBody,
-            stockBody,
-            proveedorBody,
-            estadoBody,
-            imagenBody
-        ).enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
+            productoActualizado.nombre.toRequestBody("text/plain".toMediaTypeOrNull()),
+            productoActualizado.descripcion.toRequestBody("text/plain".toMediaTypeOrNull()),
+            productoActualizado.precio.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
+            productoActualizado.stock.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
+            productoActualizado.idProveedor.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
+            productoActualizado.estado.toRequestBody("text/plain".toMediaTypeOrNull()),
+            imagenPart
+        ).enqueue(object : Callback<Producto> {
+            override fun onResponse(call: Call<Producto>, response: Response<Producto>) {
                 if (response.isSuccessful) {
                     Toast.makeText(
                         this@EditarProductoActivity,
@@ -160,12 +172,9 @@ class EditarProductoActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
+            override fun onFailure(call: Call<Producto>, t: Throwable) {
                 Toast.makeText(this@EditarProductoActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
 }
-
-
-
