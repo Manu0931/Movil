@@ -1,4 +1,4 @@
-package com.example.appinterface.usuarios
+package com.example.appinterface.usuarios.Cliente
 
 data class cliente(
     val idCliente: Int? = null,
@@ -10,4 +10,3 @@ data class cliente(
     val documento: String,
     val telefono: String
 )
-

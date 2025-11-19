@@ -11,9 +11,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Api.RetrofitInstance
-import com.example.appinterface.usuarios.Empleado
+import com.example.appinterface.usuarios.Empleado.Empleado
 import com.example.appinterface.R
-import com.example.appinterface.usuarios.EditarEmpleadoActivity
+import com.example.appinterface.usuarios.Empleado.EditarEmpleadoActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

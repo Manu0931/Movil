@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appinterface.Cupones.InventarioActivity
 import com.example.appinterface.logueo.LoginActivity
 import com.example.appinterface.R
 import com.example.appinterface.Ventas.VentasActivity

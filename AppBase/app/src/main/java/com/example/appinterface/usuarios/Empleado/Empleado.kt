@@ -1,4 +1,4 @@
-package com.example.appinterface.usuarios
+package com.example.appinterface.usuarios.Empleado
 
 data class Empleado(
     val idEmpleado: Int? = null,

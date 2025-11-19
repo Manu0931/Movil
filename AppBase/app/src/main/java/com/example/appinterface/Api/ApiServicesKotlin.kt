@@ -2,11 +2,11 @@ package com.example.appinterface.Api
 
 import com.example.appinterface.Cupones.Cupon
 import com.example.appinterface.logueo.LoginRequest
-import com.example.appinterface.usuarios.Empleado
+import com.example.appinterface.usuarios.Empleado.Empleado
 import com.example.appinterface.logueo.LoginResponse
 import com.example.appinterface.producto.Producto
 import com.example.appinterface.logueo.registro.RegistroResponse
-import com.example.appinterface.usuarios.cliente
+import com.example.appinterface.usuarios.Cliente.cliente
 import com.example.appinterface.modelos.RegistroRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

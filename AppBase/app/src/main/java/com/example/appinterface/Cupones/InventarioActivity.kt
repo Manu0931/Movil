@@ -1,4 +1,4 @@
-package com.example.appinterface.usuarios
+package com.example.appinterface.Cupones
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.R
+import com.example.appinterface.usuarios.CuponesActivity
 
 class InventarioActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")

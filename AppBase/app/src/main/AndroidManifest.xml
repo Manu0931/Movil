@@ -18,21 +18,21 @@
 		<activity android:name=".logueo.RecuperarPasswordActivity" />
 		<activity android:name=".usuarios.UsuariosActivity" />
 		<activity android:name=".usuarios.PanelCliente" />
-		<activity android:name=".usuarios.EditarEmpleadoActivity" />
-		<activity android:name=".usuarios.EditarClientesActivity" />
+		<activity android:name=".usuarios.Empleado.EditarEmpleadoActivity" />
+		<activity android:name=".usuarios.Cliente.EditarClientesActivity" />
 		<activity android:name=".usuarios.AdminPanelActivity"/>
 		<activity android:name=".logueo.LoginActivity" android:exported="false" />
-		<activity android:name=".usuarios.EmpleadosActivity" android:exported="false" />
-		<activity android:name=".usuarios.EmpleadoFormActivity" android:exported="false" />
-		<activity android:name=".usuarios.ClientesFormActivity" android:exported="false" />
-		<activity android:name=".usuarios.ClientesActivity" android:exported="false" />
+		<activity android:name=".usuarios.Empleado.EmpleadosActivity" android:exported="false" />
+		<activity android:name=".usuarios.Empleado.EmpleadoFormActivity" android:exported="false" />
+		<activity android:name=".usuarios.Cliente.ClientesFormActivity" android:exported="false" />
+		<activity android:name=".usuarios.Cliente.ClientesActivity" android:exported="false" />
 		<activity android:name=".producto.ProductosActivity" android:exported="false" />
 		<activity android:name=".producto.ModuloProductosActivity" android:exported="false" />
 		<activity android:name=".producto.EditarProductoActivity" android:exported="false"  />
 		<activity android:name=".producto.NuevoProductoActivity" android:exported="false"  />
 		<activity android:name=".ServiciosActivity" android:exported="false" />
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />
-		<activity android:name=".usuarios.InventarioActivity" />
+		<activity android:name=".Cupones.InventarioActivity" />
 		<activity android:name=".usuarios.CuponesActivity" />
 		<activity android:name=".Cupones.ListaCuponesActivity" />
 		<activity android:name=".Ventas.EnvioFormActivity" />

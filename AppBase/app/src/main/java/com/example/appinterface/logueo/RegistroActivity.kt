@@ -7,7 +7,7 @@ import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
 import com.example.appinterface.logueo.registro.RegistroResponse
 import com.example.appinterface.modelos.RegistroRequest
-import com.example.appinterface.usuarios.cliente
+import com.example.appinterface.usuarios.Cliente.cliente
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

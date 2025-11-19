@@ -10,6 +10,10 @@ import com.example.appinterface.R
 import com.example.appinterface.producto.ProductosActivity
 import com.example.appinterface.databinding.ActivityUsuariosBinding
 import com.example.appinterface.logueo.LoginActivity
+import com.example.appinterface.usuarios.Cliente.ClientesActivity
+import com.example.appinterface.usuarios.Cliente.ClientesFormActivity
+import com.example.appinterface.usuarios.Empleado.EmpleadoFormActivity
+import com.example.appinterface.usuarios.Empleado.EmpleadosActivity
 
 class UsuariosActivity : AppCompatActivity() {
 
@@ -24,7 +28,7 @@ class UsuariosActivity : AppCompatActivity() {
 
         binding.btnUsuarios.setOnClickListener { view ->
             val popup = PopupMenu(this, view)
-            popup.menuInflater.inflate(R.menu.menu_admin, popup.menu)
+            popup.menuInflater.inflate(R.menu.menu_modulo_usuario, popup.menu)
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
                 popup.setForceShowIcon(true)
@@ -45,6 +49,11 @@ class UsuariosActivity : AppCompatActivity() {
 
                     R.id.menu_configuracion -> {
                         Toast.makeText(this, "Configuración (en desarrollo)", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+
+                    R.id.menu_volver -> {
+                        finish()
                         true
                     }
 

@@ -6,8 +6,8 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.logueo.LoginActivity
-import com.example.appinterface.usuarios.EmpleadoFormActivity
-import com.example.appinterface.usuarios.EmpleadosActivity
+import com.example.appinterface.usuarios.Empleado.EmpleadoFormActivity
+import com.example.appinterface.usuarios.Empleado.EmpleadosActivity
 
 class MainActivity : AppCompatActivity() {
 
