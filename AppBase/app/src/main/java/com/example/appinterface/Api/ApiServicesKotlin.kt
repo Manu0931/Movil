@@ -68,11 +68,11 @@ interface ApiServicesKotlin {
         @Part("idProveedor") proveedor: RequestBody,
         @Part("estado") estado: RequestBody,
         @Part imagen: MultipartBody.Part?
-    ): Call<Producto>
+    ): Call<Void>
 
 
     @Multipart
-    @POST("productos/actualizar/{id}")
+    @PUT("productos/actualizar/{id}")
     fun actualizarProducto(
         @Path("id") id: Int,
         @Part("nombre") nombre: RequestBody,
@@ -82,10 +82,14 @@ interface ApiServicesKotlin {
         @Part("idProveedor") proveedor: RequestBody,
         @Part("estado") estado: RequestBody,
         @Part imagen: MultipartBody.Part?
-    ): Call<Producto>
+    ): Call<Void>
 
 
-    @DELETE("/productos/eliminar/{id}")
-    fun eliminarProducto(@Path("id") id: Int): Call<Producto>
+
+
+    @DELETE("productos/eliminar/{id}")
+    fun eliminarProducto(@Path("id") id: Int): Call<Void>
+
+
 
 }

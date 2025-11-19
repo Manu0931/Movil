@@ -138,8 +138,8 @@ class NuevoProductoActivity : AppCompatActivity() {
             bodyProveedor,
             bodyEstado,
             imagenBody
-        ).enqueue(object : Callback<Producto> {
-            override fun onResponse(call: Call<Producto>, response: Response<Producto>) {
+        ).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(
                         this@NuevoProductoActivity,
@@ -156,7 +156,7 @@ class NuevoProductoActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<Producto>, t: Throwable) {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
                 Toast.makeText(
                     this@NuevoProductoActivity,
                     "Error: ${t.message}",
