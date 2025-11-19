@@ -30,7 +30,7 @@ class EditarCuponActivity : AppCompatActivity() {
         btnActualizar = findViewById(R.id.btnActualizar)
 
         idCupon = intent.getIntExtra("id", 0)
-        val codigo = intent.getIntExtra("codigo", 0)
+        val codigo = intent.getStringExtra("codigo") ?: ""
         val descuento = intent.getIntExtra("descuento", 0)
         val fecha = intent.getStringExtra("fecha_Expiracion") ?: ""
 
@@ -58,20 +58,21 @@ class EditarCuponActivity : AppCompatActivity() {
             .enqueue(object : Callback<Cupon> {
             override fun onResponse(call: Call<Cupon>, response: Response<Cupon>) {
 
-                if (response.isSuccessful) {
+                if (!response.isSuccessful) {
+
+                    val codigo = response.code()
+                    val errorBody = response.errorBody()?.string() ?: "Sin mensaje del servidor"
+
                     Toast.makeText(
                         this@EditarCuponActivity,
-                        "Cupón actualizado correctamente",
+                        "Error $codigo -> $errorBody",
                         Toast.LENGTH_LONG
                     ).show()
-                    finish()  // Cerrar y volver a la lista
-                } else {
-                    Toast.makeText(
-                        this@EditarCuponActivity,
-                        "Error al actualizar",
-                        Toast.LENGTH_LONG
-                    ).show()
+
+                    return
                 }
+
+
             }
 
             override fun onFailure(call: Call<Cupon>, t: Throwable) {

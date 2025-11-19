@@ -20,7 +20,7 @@ import retrofit2.Call
 import retrofit2.Response
 class CuponAdapter(
     private val context: Context,
-    private val listaCupones: List<Cupon>, onEditar: Function<Unit>, onEliminar: Any
+    private val listaCupones: MutableList<Cupon>
 ) :
     RecyclerView.Adapter<CuponAdapter.CuponViewHolder>() {
 
@@ -52,7 +52,6 @@ class CuponAdapter(
         // ------------------------
         holder.btnEditar.setOnClickListener {
             val intent = Intent(context, EditarCuponActivity::class.java)
-            intent.putExtra("id", cupon.ID_Cupon)
             intent.putExtra("codigo", cupon.codigo)
             intent.putExtra("descuento", cupon.descuento)
             intent.putExtra("fecha_Expiracion", cupon.fecha_Expiracion)
