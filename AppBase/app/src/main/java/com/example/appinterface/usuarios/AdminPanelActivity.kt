@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.appinterface.producto.ProductosActivity
 import com.example.appinterface.logueo.LoginActivity
 import com.example.appinterface.R
+import com.example.appinterface.Ventas.VentasActivity
 import com.example.appinterface.databinding.ActivityAdminPanelBinding
 import com.example.appinterface.producto.ModuloProductosActivity
 
@@ -68,11 +68,10 @@ class AdminPanelActivity : AppCompatActivity() {
         }
 
         binding.cardInventario.setOnClickListener {
-            Toast.makeText(this, "Módulo de Inventario (en construcción)", Toast.LENGTH_SHORT).show()
-        }
-
+            val intent = Intent(this, InventarioActivity::class.java)
+            startActivity(intent)
         binding.cardVentas.setOnClickListener {
-            Toast.makeText(this, "Módulo de Ventas (en construcción)", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, VentasActivity::class.java))
         }
     }
-}
+}}

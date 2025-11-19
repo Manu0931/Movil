@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:padding="20dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!-- BOTÓN VOLVER -->
+        <ImageButton
+                android:id="@+id/btnVolver"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:contentDescription="Volver" />
+
+        <!-- TITULO -->
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar Pedido"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
+
+        <!-- ID CLIENTE -->
+        <EditText
+                android:id="@+id/idClientePedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID del Cliente"
+                android:inputType="number"
+                android:layout_marginTop="20dp" />
+
+        <!-- FECHA PEDIDO -->
+        <EditText
+                android:id="@+id/fechaPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha del pedido"
+                android:enabled="true"
+                android:inputType="date"
+                android:layout_marginTop="15dp" />
+
+        <!-- ESTADO -->
+        <EditText
+                android:id="@+id/estadoPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Estado"
+                android:inputType="text"
+                android:layout_marginTop="15dp" />
+
+        <!-- TOTAL -->
+        <EditText
+                android:id="@+id/totalPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Total"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="15dp" />
+
+        <!-- BOTÓN CREAR PEDIDO -->
+        <Button
+                android:id="@+id/btnCrearPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:onClick="crearPedido"
+                android:text="Agregar Pedido"/>
+
+    </LinearLayout>
+
+</ScrollView>

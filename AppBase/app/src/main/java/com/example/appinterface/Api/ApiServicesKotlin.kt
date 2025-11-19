@@ -1,5 +1,6 @@
 package com.example.appinterface.Api
 
+import com.example.appinterface.Cupones.Cupon
 import com.example.appinterface.logueo.LoginRequest
 import com.example.appinterface.usuarios.Empleado
 import com.example.appinterface.logueo.LoginResponse
@@ -11,6 +12,9 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import com.example.appinterface.Ventas.Envio
+import com.example.appinterface.Ventas.Pedido
+
 
 interface ApiServicesKotlin {
 
@@ -31,6 +35,7 @@ interface ApiServicesKotlin {
         @Path("id") id: Int
     ): Call<Empleado>
 
+
     @GET("clientes")
     fun obtenerClientes(): Call<List<cliente>>
 
@@ -41,7 +46,7 @@ interface ApiServicesKotlin {
     @PUT("clientes/{id}")
     fun actualizarClientes(
         @Path("id") id: Int,
-        @Body empleado: Empleado
+        @Body cliente: cliente
     ): Call<cliente>
 
     @DELETE("clientes/{id}")
@@ -54,6 +59,9 @@ interface ApiServicesKotlin {
     fun login(
         @Body request: LoginRequest
     ): Call<LoginResponse>
+
+    @GET("cupon")
+    fun getCupones(): Call<List<Cupon>>
 
     @GET("productos")
     fun listarProductos(): Call<List<Producto>>
@@ -92,4 +100,18 @@ interface ApiServicesKotlin {
 
 
 
+    @GET("envio")
+    fun getEnvio(): Call<List<Envio>>
+
+    @POST("envio")
+    fun crearEnvio(@Body envio: Envio): Call<Envio>
+
+    @GET("pedido")
+    fun getPedido(): Call<List<Pedido>>
+
+    @POST("pedido")
+    fun crearPedido(@Body pedido: Pedido): Call<Pedido>
 }
+
+
+

@@ -19,6 +19,7 @@
 		<activity android:name=".usuarios.UsuariosActivity" />
 		<activity android:name=".usuarios.PanelCliente" />
 		<activity android:name=".usuarios.EditarEmpleadoActivity" />
+		<activity android:name=".usuarios.EditarClientesActivity" />
 		<activity android:name=".usuarios.AdminPanelActivity"/>
 		<activity android:name=".logueo.LoginActivity" android:exported="false" />
 		<activity android:name=".usuarios.EmpleadosActivity" android:exported="false" />
@@ -31,6 +32,18 @@
 		<activity android:name=".producto.NuevoProductoActivity" android:exported="false"  />
 		<activity android:name=".ServiciosActivity" android:exported="false" />
 		<activity android:name=".SobreNosotrosActivity" android:exported="false" />
+		<activity android:name=".usuarios.InventarioActivity" />
+		<activity android:name=".usuarios.CuponesActivity" />
+		<activity android:name=".Cupones.ListaCuponesActivity" />
+		<activity android:name=".Ventas.EnvioFormActivity" />
+		<activity android:name=".Ventas.PedidoFormActivity" />
+
+
+
+		<activity android:name=".Ventas.VentasActivity" />
+		<activity android:name=".Ventas.EnviosActivity" />
+		<activity android:name=".Ventas.PedidoActivity" />
+
 
 		<activity
 				android:name=".MainActivity"
