@@ -12,7 +12,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListaCuponesActivity : AppCompatActivity() {
+class
+ListaCuponesActivity : AppCompatActivity() {
 
     private lateinit var recyclerCupones: RecyclerView
     private lateinit var adapter: CuponAdapter

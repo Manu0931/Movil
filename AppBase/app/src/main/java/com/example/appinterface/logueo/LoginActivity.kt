@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private val api = RetrofitInstance.empleadosApi
 
+    private lateinit var btnTogglePassword: ImageButton
+
+    private var passwordVisible = false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +35,28 @@ class LoginActivity : AppCompatActivity() {
 
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
+        btnTogglePassword = findViewById(R.id.btnTogglePassword)
         findViewById<Button>(R.id.btnLogin).setOnClickListener { doLogin() }
 
         findViewById<Button>(R.id.btnRegresar).setOnClickListener {
             finish()
         }
+        btnTogglePassword.setOnClickListener {
+            passwordVisible = !passwordVisible
+
+            if (passwordVisible) {
+                etPassword.inputType =
+                    android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                btnTogglePassword.setImageResource(R.drawable.ic_eye)
+            } else {
+                etPassword.inputType =
+                    android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                btnTogglePassword.setImageResource(R.drawable.ic_eye_off)
+            }
+
+            etPassword.setSelection(etPassword.text.length)
+        }
+
 
 
         findViewById<TextView>(R.id.tvForgotPassword).setOnClickListener {
