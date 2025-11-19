@@ -1,7 +1,7 @@
 package com.example.appinterface.producto
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,85 +16,52 @@ import retrofit2.Response
 
 class ProductosActivity : AppCompatActivity() {
 
-    private lateinit var recyclerView: RecyclerView
-
+    private var id_Producto: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_productos)
 
-        recyclerView = findViewById(R.id.RecyProductos)
+        id_Producto = intent.getIntExtra("id_Producto", 0)
+        Log.d("EDITAR", "ID recibido en activity → $id_Producto")
+
+
+        val recyclerView = findViewById<RecyclerView>(R.id.RecyProductos)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         findViewById<ImageView>(R.id.btnVolverProductos).setOnClickListener {
             finish()
         }
 
-        listarProductos()
-    }
 
-    private fun listarProductos() {
-        val call = RetrofitInstance.productosApi.listarProductos()
+        RetrofitInstance.productosApi.listarProductos()
+            .enqueue(object : Callback<List<Producto>> {
+                override fun onResponse(
+                    call: Call<List<Producto>>,
+                    response: Response<List<Producto>>
+                ) {
+                    val productos = response.body()
 
-        call.enqueue(object : Callback<List<Producto>> {
-            override fun onResponse(call: Call<List<Producto>>, response: Response<List<Producto>>) {
-                if (response.isSuccessful && response.body() != null) {
+                    if (response.isSuccessful && !productos.isNullOrEmpty()) {
 
-                    val listaProductos = response.body()!!
+                        recyclerView.adapter =
+                            ProductoAdapter(productos.toMutableList(), this@ProductosActivity)
 
-                    // Aquí se crea el adapter con editar + eliminar
-                    val adapter = ProductoAdapter(
-                        listaProductos,
-                        onEditar = { producto ->
-                            val intent = Intent(this@ProductosActivity, EditarProductoActivity::class.java)
-                            intent.putExtra("producto", producto) // Asegúrate de que Producto implemente Serializable o Parcelable
-                            startActivity(intent)
-                        },
-                        onEliminar = { producto ->
-                            eliminarProducto(producto)
-                        }
-                    )
-
-                    recyclerView.adapter = adapter
-
-                } else {
-                    Toast.makeText(
-                        this@ProductosActivity,
-                        "Error al obtener productos: ${response.code()}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<Producto>>, t: Throwable) {
-                Toast.makeText(
-                    this@ProductosActivity,
-                    "Error de conexión: ${t.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        })
-    }
-
-    private fun eliminarProducto(producto: Producto) {
-        RetrofitInstance.productosApi.eliminarProducto(producto.idProducto ?: 0)
-
-
-        RetrofitInstance.productosApi.eliminarProducto(producto.idProducto ?: 0)
-            .enqueue(object : Callback<Producto> {
-                override fun onResponse(call: Call<Producto>, response: Response<Producto>) {
-                    if (response.isSuccessful) {
-                        Toast.makeText(this@ProductosActivity, "Producto eliminado", Toast.LENGTH_SHORT).show()
-                        listarProductos() // refresca la lista
                     } else {
-                        Toast.makeText(this@ProductosActivity, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@ProductosActivity,
+                            "No hay productos disponibles",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
-                override fun onFailure(call: Call<Producto>, t: Throwable) {
-                    Toast.makeText(this@ProductosActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                override fun onFailure(call: Call<List<Producto>>, t: Throwable) {
+                    Toast.makeText(
+                        this@ProductosActivity,
+                        "Error de conexión: ${t.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             })
-
     }
 }
-

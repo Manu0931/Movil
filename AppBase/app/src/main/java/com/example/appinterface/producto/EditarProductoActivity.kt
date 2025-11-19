@@ -5,12 +5,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Api.RetrofitInstance
 import com.example.appinterface.R
+import com.squareup.picasso.Picasso
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
@@ -43,7 +46,6 @@ class EditarProductoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_producto)
 
-        // Binding
         etNombre = findViewById(R.id.etNombre)
         etDescripcion = findViewById(R.id.etDescripcion)
         etPrecio = findViewById(R.id.etPrecio)
@@ -55,45 +57,45 @@ class EditarProductoActivity : AppCompatActivity() {
         btnActualizarProducto = findViewById(R.id.btnActualizarProducto)
         btnVolverEditar = findViewById(R.id.btnVolverEditar)
 
-        // Regresar
-        btnVolverEditar.setOnClickListener { finish() }
+        idProducto = intent.getIntExtra("idProducto", 0)
 
-        // Recibir datos enviados desde ProductosActivity
-        val producto = intent.getSerializableExtra("producto") as? Producto
+        etNombre.setText(intent.getStringExtra("nombre") ?: "")
+        etDescripcion.setText(intent.getStringExtra("descripcion") ?: "")
+        etPrecio.setText(intent.getDoubleExtra("precio", 0.0).toString())
+        etStock.setText(intent.getIntExtra("stock", 0).toString())
+        etProveedor.setText(intent.getIntExtra("idProveedor", 0).toString())
+        etEstado.setText(intent.getStringExtra("estado") ?: "")
 
-        if (producto != null) {
-            idProducto = producto.idProducto ?: 0
-            etNombre.setText(producto.nombre)
-            etDescripcion.setText(producto.descripcion)
-            etPrecio.setText(producto.precio.toString())
-            etStock.setText(producto.stock.toString())
-            etProveedor.setText(producto.idProveedor.toString())
-            etEstado.setText(producto.estado)
-
-            // Cargar imagen actual
-            com.squareup.picasso.Picasso.get().load(producto.imagen).into(previewImagen)
+        val imagenUrl = intent.getStringExtra("imagen")
+        if (!imagenUrl.isNullOrEmpty()) {
+            Picasso.get().load(imagenUrl).into(previewImagen)
         }
 
-        // Seleccionar imagen
+        btnVolverEditar.setOnClickListener { finish() }
+
         btnSeleccionar.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, REQUEST_IMAGE_PICK)
         }
 
-        // Actualizar
         btnActualizarProducto.setOnClickListener {
             actualizarProducto()
         }
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == REQUEST_IMAGE_PICK && resultCode == Activity.RESULT_OK) {
             imagenUri = data?.data
             previewImagen.setImageURI(imagenUri)
         }
+    }
+
+    // --- Convertir String/Int/Double a RequestBody ---
+    private fun toPlain(value: Any): RequestBody {
+        return value.toString().toRequestBody("text/plain".toMediaTypeOrNull())
     }
 
     // Convertir URI → File
@@ -101,8 +103,7 @@ class EditarProductoActivity : AppCompatActivity() {
         val cursor = contentResolver.query(uri, null, null, null, null)
         val nameIndex = cursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME) ?: -1
         cursor?.moveToFirst()
-        val fileName =
-            if (nameIndex != -1) cursor?.getString(nameIndex) else "temp_image.jpg"
+        val fileName = if (nameIndex != -1) cursor?.getString(nameIndex) else "temp_image.jpg"
         cursor?.close()
 
         val input = contentResolver.openInputStream(uri)
@@ -117,63 +118,50 @@ class EditarProductoActivity : AppCompatActivity() {
     }
 
     private fun actualizarProducto() {
-        // Determinar estado
+
+        if (idProducto == 0) {
+            Toast.makeText(this, "ID inválido", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val estadoTexto = if (etEstado.text.toString().trim().equals("Activo", ignoreCase = true)) {
             "Activo"
         } else {
             "Inactivo"
         }
 
-        // Crear objeto Producto con datos actuales
-        val productoActualizado = Producto(
-            idProducto = idProducto,
-            nombre = etNombre.text.toString(),
-            descripcion = etDescripcion.text.toString(),
-            precio = etPrecio.text.toString().toDoubleOrNull() ?: 0.0,
-            stock = etStock.text.toString().toIntOrNull() ?: 0,
-            idProveedor = etProveedor.text.toString().toIntOrNull() ?: 0,
-            estado = estadoTexto,
-            imagen = null // La imagen la manejaremos aparte si se selection
-        )
-
-        // Preparar Multipart
         var imagenPart: MultipartBody.Part? = null
+
+        // Procesar imagen si fue seleccionada
         if (imagenUri != null) {
             val file = uriToFile(imagenUri!!)
             val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
             imagenPart = MultipartBody.Part.createFormData("imagen", file.name, requestFile)
         }
 
-        // Llamada a Retrofit
+        // Llamada Retrofit
         RetrofitInstance.productosApi.actualizarProducto(
             idProducto,
-            productoActualizado.nombre.toRequestBody("text/plain".toMediaTypeOrNull()),
-            productoActualizado.descripcion.toRequestBody("text/plain".toMediaTypeOrNull()),
-            productoActualizado.precio.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
-            productoActualizado.stock.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
-            productoActualizado.idProveedor.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
-            productoActualizado.estado.toRequestBody("text/plain".toMediaTypeOrNull()),
+            toPlain(etNombre.text.toString()),
+            toPlain(etDescripcion.text.toString()),
+            toPlain(etPrecio.text.toString().toDoubleOrNull() ?: 0.0),
+            toPlain(etStock.text.toString().toIntOrNull() ?: 0),
+            toPlain(etProveedor.text.toString().toIntOrNull() ?: 0),
+            toPlain(estadoTexto),
             imagenPart
-        ).enqueue(object : Callback<Producto> {
-            override fun onResponse(call: Call<Producto>, response: Response<Producto>) {
+        ).enqueue(object : Callback<Void> {
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(
-                        this@EditarProductoActivity,
-                        "Producto actualizado correctamente",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@EditarProductoActivity, "Producto actualizado", Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(
-                        this@EditarProductoActivity,
-                        "Error al actualizar (${response.code()})",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@EditarProductoActivity, "Error (${response.code()})", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<Producto>, t: Throwable) {
-                Toast.makeText(this@EditarProductoActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(this@EditarProductoActivity, "Fallo: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
