@@ -65,8 +65,8 @@ interface ApiServicesKotlin {
     @PUT("cupon/{id}")
     fun actualizarCupon(
         @Path("id") idCupon: Int,
-        @Body cuponActualizado: Cupon
-    ): Call<Cupon>
+        @Body cupon: Cupon
+    ): Call<Void>
 
 
     @DELETE("cupon/{id}")

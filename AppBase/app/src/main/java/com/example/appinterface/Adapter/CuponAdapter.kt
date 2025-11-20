@@ -4,6 +4,7 @@ import android.R.attr.id
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +52,10 @@ class CuponAdapter(
         //  BOTÓN EDITAR CUPÓN
         // ------------------------
         holder.btnEditar.setOnClickListener {
+            Log.d("CUPON_ADAPTER", "ID_Cupon recibido = ${cupon.ID_Cupon}")
+
             val intent = Intent(context, EditarCuponActivity::class.java)
+            intent.putExtra("id", cupon.ID_Cupon)
             intent.putExtra("codigo", cupon.codigo)
             intent.putExtra("descuento", cupon.descuento)
             intent.putExtra("fecha_Expiracion", cupon.fecha_Expiracion)
@@ -68,7 +72,7 @@ class CuponAdapter(
                 .setMessage("¿Deseas eliminar el cupón con código ${cupon.codigo}?")
                 .setPositiveButton("Sí") { dialog, _ ->
 
-                    RetrofitInstance.empleadosApi.eliminarCupon(cupon.ID_Cupon!!)
+                    RetrofitInstance.empleadosApi.eliminarCupon(cupon.ID_Cupon)
                         .enqueue(object : Callback<Cupon> {
                             override fun onResponse(call: Call<Cupon>, response: Response<Cupon>) {
                                 if (response.isSuccessful) {

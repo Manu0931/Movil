@@ -1,6 +1,7 @@
 package com.example.appinterface.Cupones
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -30,6 +31,8 @@ class EditarCuponActivity : AppCompatActivity() {
         btnActualizar = findViewById(R.id.btnActualizar)
 
         idCupon = intent.getIntExtra("id", 0)
+        Log.d("EDITAR_CUPON", "ID recibido = $idCupon")
+
         val codigo = intent.getStringExtra("codigo") ?: ""
         val descuento = intent.getIntExtra("descuento", 0)
         val fecha = intent.getStringExtra("fecha_Expiracion") ?: ""
@@ -46,7 +49,6 @@ class EditarCuponActivity : AppCompatActivity() {
 
     private fun actualizarCupon() {
 
-        //Crear objeto cupon con los nuevos valores
         val cuponActualizado = Cupon(
             ID_Cupon = idCupon,
             codigo = etCodigo.text.toString(),
@@ -55,27 +57,21 @@ class EditarCuponActivity : AppCompatActivity() {
         )
 
         RetrofitInstance.empleadosApi.actualizarCupon(idCupon, cuponActualizado)
-            .enqueue(object : Callback<Cupon> {
-            override fun onResponse(call: Call<Cupon>, response: Response<Cupon>) {
+            .enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
 
-                if (!response.isSuccessful) {
+                if (response.isSuccessful) {
 
-                    val codigo = response.code()
-                    val errorBody = response.errorBody()?.string() ?: "Sin mensaje del servidor"
-
-                    Toast.makeText(
-                        this@EditarCuponActivity,
-                        "Error $codigo -> $errorBody",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    return
+                    Toast.makeText(this@EditarCuponActivity, "Cupon actualizado", Toast.LENGTH_LONG).show()
+                    finish()
+                }else {
+                    Toast.makeText(this@EditarCuponActivity,"Error al actualizar",Toast.LENGTH_LONG).show()
                 }
 
 
             }
 
-            override fun onFailure(call: Call<Cupon>, t: Throwable) {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
                 Toast.makeText(
                     this@EditarCuponActivity,
                     "Error de conexión: ${t.message}",
