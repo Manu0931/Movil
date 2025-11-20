@@ -36,6 +36,7 @@
 		<activity android:name=".usuarios.CuponesActivity" />
 		<activity android:name=".Cupones.ListaCuponesActivity" />
 		<activity android:name=".Cupones.EditarCuponActivity" />
+		<activity android:name=".Cupones.CrearCuponActivity" />
 		<activity android:name=".Ventas.EnvioFormActivity" />
 		<activity android:name=".Ventas.PedidoFormActivity" />
 

@@ -62,6 +62,10 @@ interface ApiServicesKotlin {
     @GET("cupon")
     fun getCupones(): Call<List<Cupon>>
 
+    @POST("cupon")
+    fun agregarCupon(@Body cupon: Cupon): Call<Cupon>
+
+
     @PUT("cupon/{id}")
     fun actualizarCupon(
         @Path("id") idCupon: Int,

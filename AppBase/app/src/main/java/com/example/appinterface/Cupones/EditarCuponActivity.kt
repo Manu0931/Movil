@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appinterface.Api.RetrofitInstance
@@ -31,8 +32,6 @@ class EditarCuponActivity : AppCompatActivity() {
         btnActualizar = findViewById(R.id.btnActualizar)
 
         idCupon = intent.getIntExtra("id", 0)
-        Log.d("EDITAR_CUPON", "ID recibido = $idCupon")
-
         val codigo = intent.getStringExtra("codigo") ?: ""
         val descuento = intent.getIntExtra("descuento", 0)
         val fecha = intent.getStringExtra("fecha_Expiracion") ?: ""
@@ -42,9 +41,12 @@ class EditarCuponActivity : AppCompatActivity() {
         etDescuento.setText(descuento.toString())
         etFecha.setText(fecha)
 
-        btnActualizar.setOnClickListener {
-            actualizarCupon()
+        btnActualizar.setOnClickListener { actualizarCupon() }
+        val btnVolver = findViewById<ImageView>(R.id.btnVolverEditar)
+        btnVolver.setOnClickListener {
+            finish()
         }
+
     }
 
     private fun actualizarCupon() {
